@@ -1,544 +1,656 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>博客</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的博客 - 首页</title>
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
+      body {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          line-height: 1.6;
+          color: #333;
+          background-color: #f8f9fa;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+      .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+      }
 
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
+      /* Header */
+      header {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 2rem 0;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
+      .header-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+      }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #667eea;
-        }
+      .logo h1 {
+          font-size: 2.5rem;
+          font-weight: 300;
+          margin-bottom: 0.5rem;
+      }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+      .logo p {
+          opacity: 0.9;
+          font-size: 1.1rem;
+      }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
+      nav ul {
+          list-style: none;
+          display: flex;
+          gap: 2rem;
+      }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #667eea;
-        }
+      nav a {
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+          padding: 0.5rem 1rem;
+          border-radius: 25px;
+          transition: all 0.3s ease;
+      }
 
-        /* Main Content */
-        main {
-            margin-top: 80px;
-            min-height: calc(100vh - 160px);
-            padding: 2rem 0;
-        }
+      nav a:hover, nav a.active {
+          background: rgba(255,255,255,0.2);
+          transform: translateY(-2px);
+      }
 
-        .section {
-            display: none;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.5s ease-in;
-        }
+      /* Main Content */
+      main {
+          padding: 3rem 0;
+      }
 
-        .section.active {
-            display: block;
-        }
+      .content-grid {
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          gap: 3rem;
+          margin-bottom: 3rem;
+      }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+      /* Blog Posts */
+      .blog-posts {
+          background: white;
+          border-radius: 12px;
+          padding: 2rem;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      }
 
-        /* Home Section */
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-        }
+      .section-title {
+          font-size: 1.8rem;
+          margin-bottom: 2rem;
+          color: #2c3e50;
+          border-bottom: 3px solid #667eea;
+          padding-bottom: 0.5rem;
+      }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+      .post-item {
+          padding: 1.5rem 0;
+          border-bottom: 1px solid #eee;
+          transition: all 0.3s ease;
+      }
 
-        .hero p {
-            font-size: 1.3rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
+      .post-item:last-child {
+          border-bottom: none;
+      }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+      .post-item:hover {
+          transform: translateX(10px);
+          background: #f8f9fa;
+          margin: 0 -1rem;
+          padding-left: 2rem;
+          border-radius: 8px;
+      }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
+      .post-title {
+          font-size: 1.3rem;
+          margin-bottom: 0.5rem;
+      }
 
-        /* Blog Section */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+      .post-title a {
+          color: #2c3e50;
+          text-decoration: none;
+          transition: color 0.3s ease;
+      }
 
-        .blog-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+      .post-title a:hover {
+          color: #667eea;
+      }
 
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
+      .post-meta {
+          color: #666;
+          font-size: 0.9rem;
+          margin-bottom: 0.8rem;
+      }
 
-        .blog-card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
+      .post-excerpt {
+          color: #555;
+          line-height: 1.6;
+      }
 
-        .blog-meta {
-            color: #999;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
+      .post-tags {
+          margin-top: 1rem;
+      }
 
-        /* Links Section */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
+      .tag {
+          display: inline-block;
+          background: #e3f2fd;
+          color: #1976d2;
+          padding: 0.2rem 0.6rem;
+          border-radius: 15px;
+          font-size: 0.8rem;
+          margin-right: 0.5rem;
+          margin-bottom: 0.3rem;
+          text-decoration: none;
+          transition: all 0.3s ease;
+      }
 
-        .link-card {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            color: #333;
-        }
+      .tag:hover {
+          background: #1976d2;
+          color: white;
+          transform: scale(1.05);
+      }
 
-        .link-card:hover {
-            transform: translateY(-3px);
-            color: #667eea;
-        }
+      /* Sidebar */
+      .sidebar {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+      }
 
-        .link-card i {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
+      .widget {
+          background: white;
+          border-radius: 12px;
+          padding: 1.5rem;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      }
 
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
-        }
+      .widget-title {
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+          color: #2c3e50;
+          border-bottom: 2px solid #667eea;
+          padding-bottom: 0.5rem;
+      }
 
-        .avatar {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            margin: 0 auto;
-        }
+      /* Stats */
+      .stats-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+      }
 
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
+      .stat-item {
+          text-align: center;
+          padding: 1rem;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          color: white;
+          border-radius: 8px;
+      }
 
-        .skill-tag {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-        }
+      .stat-number {
+          font-size: 1.8rem;
+          font-weight: bold;
+          display: block;
+      }
 
-        /* Footer */
-        footer {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
-        }
+      .stat-label {
+          font-size: 0.9rem;
+          opacity: 0.9;
+      }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+      /* Tag Cloud */
+      .tag-cloud {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+      }
 
-        .contact-info h4 {
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
+      .tag-cloud .tag {
+          font-size: 0.9rem;
+      }
 
-        .contact-info a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            margin: 0.5rem 0;
-            transition: color 0.3s ease;
-        }
+      /* Links */
+      .links-list {
+          list-style: none;
+      }
 
-        .contact-info a:hover {
-            color: #667eea;
-        }
+      .links-list li {
+          margin-bottom: 0.8rem;
+      }
 
-        .visitor-counter {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            display: inline-block;
-            margin-top: 1rem;
-        }
+      .links-list a {
+          color: #667eea;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          padding: 0.5rem;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+      }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
-            }
+      .links-list a:hover {
+          background: #f0f4ff;
+          transform: translateX(5px);
+      }
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+      .links-list a::before {
+          content: "🔗";
+          margin-right: 0.5rem;
+      }
 
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
+      /* Footer */
+      footer {
+          background: #2c3e50;
+          color: white;
+          padding: 2rem 0;
+          margin-top: 3rem;
+      }
 
-            .section {
-                padding: 2rem;
-            }
-        }
-    </style>
+      .footer-content {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+          margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+          margin-bottom: 1rem;
+          color: #ecf0f1;
+      }
+
+      .footer-section p, .footer-section a {
+          color: #bdc3c7;
+          text-decoration: none;
+          line-height: 1.8;
+      }
+
+      .footer-section a:hover {
+          color: #667eea;
+      }
+
+      .social-links {
+          display: flex;
+          gap: 1rem;
+          margin-top: 1rem;
+      }
+
+      .social-links a {
+          display: inline-block;
+          width: 40px;
+          height: 40px;
+          background: #34495e;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 40px;
+          transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+          background: #667eea;
+          transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+          text-align: center;
+          padding-top: 2rem;
+          border-top: 1px solid #34495e;
+          color: #95a5a6;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+          .header-content {
+              flex-direction: column;
+              gap: 1rem;
+          }
+
+          .content-grid {
+              grid-template-columns: 1fr;
+              gap: 2rem;
+          }
+
+          nav ul {
+              flex-wrap: wrap;
+              justify-content: center;
+          }
+
+          .stats-grid {
+              grid-template-columns: 1fr;
+          }
+
+          .footer-content {
+              grid-template-columns: 1fr;
+              text-align: center;
+          }
+      }
+
+      /* Reading Progress */
+      .reading-progress {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          background: linear-gradient(to right, #667eea, #764ba2);
+          z-index: 1000;
+          transition: width 0.3s ease;
+      }
+
+      /* Scroll to top */
+      .scroll-top {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          width: 50px;
+          height: 50px;
+          background: #667eea;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+          font-size: 1.2rem;
+      }
+
+      .scroll-top.visible {
+          opacity: 1;
+          visibility: visible;
+      }
+
+      .scroll-top:hover {
+          background: #5a6fd8;
+          transform: translateY(-3px);
+      }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <i class="fas fa-code"></i> 我的博客
-            </div>
-            <ul class="nav-links">
-                <li><a href="#" onclick="showSection('home')" class="active">首页</a></li>
-                <li><a href="#" onclick="showSection('blog')">博客</a></li>
-                <li><a href="#" onclick="showSection('links')">日常链接</a></li>
-                <li><a href="#" onclick="showSection('about')">关于</a></li>
-            </ul>
-        </nav>
-    </header>
+  <div class="reading-progress"></div>
+  
+  <header>
+      <div class="container">
+          <div class="header-content">
+              <div class="logo">
+                  <h1>我的博客</h1>
+                  <p>分享技术与生活的点点滴滴</p>
+              </div>
+              <nav>
+                  <ul>
+                      <li><a href="#" class="active">首页</a></li>
+                      <li><a href="#blog">博客</a></li>
+                      <li><a href="#about">关于</a></li>
+                      <li><a href="#links">友链</a></li>
+                      <li><a href="#contact">联系</a></li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+  </header>
 
-    <main class="container">
-        <!-- 首页 -->
-        <section id="home" class="section active">
-            <div class="hero">
-                <h1>哦哦~做到只积噉嘅样~</h1>
-                <p>分享技术、记录生活、探索世界</p>
-                <a href="#" onclick="showSection('blog')" class="cta-button">
-                    开始阅读 <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <h3>最新文章</h3>
-                    <div class="blog-meta">
-                        <i class="fas fa-calendar"></i> 2024-03-15
-                    </div>
-                    <p>这里是最新文章的摘要内容，介绍文章的主要内容和亮点...</p>
-                </div>
-                <div class="blog-card">
-                    <h3>热门文章</h3>
-                    <div class="blog-meta">
-                        <i class="fas fa-eye"></i> 1,234 次阅读
-                    </div>
-                    <p>这是一篇热门文章，受到了很多读者的关注和讨论...</p>
-                </div>
-                <div class="blog-card">
-                    <h3>推荐阅读</h3>
-                    <div class="blog-meta">
-                        <i class="fas fa-star"></i> 编辑推荐
-                    </div>
-                    <p>精心挑选的优质内容，值得深入阅读和思考...</p>
-                </div>
-            </div>
-        </section>
+  <main>
+      <div class="container">
+          <div class="content-grid">
+              <section class="blog-posts">
+                  <h2 class="section-title">最新文章</h2>
+                  
+                  <article class="post-item">
+                      <h3 class="post-title">
+                          <a href="#">深入理解JavaScript闭包机制</a>
+                      </h3>
+                      <div class="post-meta">
+                          <span>📅 2024-03-15</span>
+                          <span>👁️ 1,234 次阅读</span>
+                          <span>💬 12 评论</span>
+                      </div>
+                      <p class="post-excerpt">
+                          闭包是JavaScript中一个重要但常被误解的概念。本文将通过实例深入解析闭包的工作原理，帮助你彻底理解这一核心概念...
+                      </p>
+                      <div class="post-tags">
+                          <a href="#" class="tag">JavaScript</a>
+                          <a href="#" class="tag">前端开发</a>
+                          <a href="#" class="tag">编程基础</a>
+                      </div>
+                  </article>
 
-        <!-- 博客 -->
-        <section id="blog" class="section">
-            <h2><i class="fas fa-blog"></i> 博客文章</h2>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <h3>JavaScript 进阶技巧</h3>
-                    <div class="blog-meta">
-                        <i class="fas fa-calendar"></i> 2024-03-15 | 
-                        <i class="fas fa-tag"></i> 前端开发
-                    </div>
-                    <p>深入探讨JavaScript的高级特性，包括闭包、原型链、异步编程等核心概念...</p>
-                    <a href="#" class="cta-button" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.9rem;">阅读全文</a>
-                </div>
-                <div class="blog-card">
-                    <h3>CSS Grid 布局完全指南</h3>
-                    <div class="blog-meta">
-                        <i class="fas fa-calendar"></i> 2024-03-10 | 
-                        <i class="fas fa-tag"></i> CSS
-                    </div>
-                    <p>从基础到进阶，全面掌握CSS Grid布局系统，打造响应式网页设计...</p>
-                    <a href="#" class="cta-button" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.9rem;">阅读全文</a>
-                </div>
-                <div class="blog-card">
-                    <h3>React Hooks 最佳实践</h3>
-                    <div class="blog-meta">
-                        <i class="fas fa-calendar"></i> 2024-03-05 | 
-                        <i class="fas fa-tag"></i> React
-                    </div>
-                    <p>分享React Hooks的使用技巧和最佳实践，提升开发效率...</p>
-                    <a href="#" class="cta-button" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.9rem;">阅读全文</a>
-                </div>
-                <div class="blog-card">
-                    <h3>Node.js 性能优化</h3>
-                    <div class="blog-meta">
-                        <i class="fas fa-calendar"></i> 2024-02-28 | 
-                        <i class="fas fa-tag"></i> 后端开发
-                    </div>
-                    <p>探讨Node.js应用的性能优化策略，包括内存管理、并发处理等...</p>
-                    <a href="#" class="cta-button" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.9rem;">阅读全文</a>
-                </div>
-            </div>
-        </section>
+                  <article class="post-item">
+                      <h3 class="post-title">
+                          <a href="#">React Hooks 最佳实践指南</a>
+                      </h3>
+                      <div class="post-meta">
+                          <span>📅 2024-03-12</span>
+                          <span>👁️ 2,156 次阅读</span>
+                          <span>💬 8 评论</span>
+                      </div>
+                      <p class="post-excerpt">
+                          React Hooks 改变了我们编写React组件的方式。本文总结了使用Hooks的最佳实践，包括性能优化和常见陷阱...
+                      </p>
+                      <div class="post-tags">
+                          <a href="#" class="tag">React</a>
+                          <a href="#" class="tag">Hooks</a>
+                          <a href="#" class="tag">前端框架</a>
+                      </div>
+                  </article>
 
-        <!-- 日常链接 -->
-        <section id="links" class="section">
-            <h2><i class="fas fa-link"></i> 日常网页链接</h2>
-            <div class="links-grid">
-                <a href="https://github.com" class="link-card" target="_blank">
-                    <i class="fab fa-github"></i>
-                    <h3>GitHub</h3>
-                    <p>代码托管与协作平台</p>
-                </a>
-                <a href="https://stackoverflow.com" class="link-card" target="_blank">
-                    <i class="fab fa-stack-overflow"></i>
-                    <h3>Stack Overflow</h3>
-                    <p>程序员问答社区</p>
-                </a>
-                <a href="https://developer.mozilla.org" class="link-card" target="_blank">
-                    <i class="fas fa-book"></i>
-                    <h3>MDN Web Docs</h3>
-                    <p>Web开发文档</p>
-                </a>
-                <a href="https://codepen.io" class="link-card" target="_blank">
-                    <i class="fab fa-codepen"></i>
-                    <h3>CodePen</h3>
-                    <p>前端代码展示平台</p>
-                </a>
-                <a href="https://dribbble.com" class="link-card" target="_blank">
-                    <i class="fab fa-dribbble"></i>
-                    <h3>Dribbble</h3>
-                    <p>设计灵感社区</p>
-                </a>
-                <a href="https://unsplash.com" class="link-card" target="_blank">
-                    <i class="fas fa-camera"></i>
-                    <h3>Unsplash</h3>
-                    <p>免费高质量图片</p>
-                </a>
-            </div>
-        </section>
+                  <article class="post-item">
+                      <h3 class="post-title">
+                          <a href="#">Docker容器化部署实战</a>
+                      </h3>
+                      <div class="post-meta">
+                          <span>📅 2024-03-10</span>
+                          <span>👁️ 1,876 次阅读</span>
+                          <span>💬 15 评论</span>
+                      </div>
+                      <p class="post-excerpt">
+                          容器化技术已成为现代应用部署的标准。本文将介绍如何使用Docker进行应用容器化，包括Dockerfile编写和多阶段构建...
+                      </p>
+                      <div class="post-tags">
+                          <a href="#" class="tag">Docker</a>
+                          <a href="#" class="tag">DevOps</a>
+                          <a href="#" class="tag">容器化</a>
+                      </div>
+                  </article>
 
-        <!-- 关于 -->
-        <section id="about" class="section">
-            <h2><i class="fas fa-user"></i> 关于我</h2>
-            <div class="about-content">
-                <div class="avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div>
-                    <h3>你好，我是博主</h3>
-                    <p>我是一名热爱技术的开发者，专注于前端和全栈开发。喜欢探索新技术，分享学习心得，记录生活点滴。</p>
-                    <p>在这个博客中，我会分享我的技术文章、学习笔记、项目经验以及生活感悟。希望能够帮助到更多的朋友，也欢迎大家与我交流讨论。</p>
-                    
-                    <div class="skills">
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Vue.js</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">HTML</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+                  <article class="post-item">
+                      <h3 class="post-title">
+                          <a href="#">Python数据分析入门教程</a>
+                      </h3>
+                      <div class="post-meta">
+                          <span>📅 2024-03-08</span>
+                          <span>👁️ 3,421 次阅读</span>
+                          <span>💬 22 评论</span>
+                      </div>
+                      <p class="post-excerpt">
+                          数据分析是当今最热门的技能之一。本教程将带你从零开始学习使用Python进行数据分析，包括pandas、numpy等核心库的使用...
+                      </p>
+                      <div class="post-tags">
+                          <a href="#" class="tag">Python</a>
+                          <a href="#" class="tag">数据分析</a>
+                          <a href="#" class="tag">机器学习</a>
+                      </div>
+                  </article>
+              </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="contact-info">
-                    <h4><i class="fas fa-envelope"></i> 联系方式</h4>
-                    <a href="mailto:your.email@example.com">
-                        <i class="fas fa-envelope"></i> your.email@example.com
-                    </a>
-                    <a href="https://github.com/yourusername" target="_blank">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="https://twitter.com/yourusername" target="_blank">
-                        <i class="fab fa-twitter"></i> Twitter
-                    </a>
-                    <a href="https://linkedin.com/in/yourusername" target="_blank">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
-                </div>
-                <div class="contact-info">
-                    <h4><i class="fas fa-chart-line"></i> 网站统计</h4>
-                    <div class="visitor-counter">
-                        <i class="fas fa-eye"></i> 
-                        总访问量: <span id="visitor-count">1,234</span>
-                    </div>
-                    <div class="visitor-counter">
-                        <i class="fas fa-users"></i> 
-                        今日访客: <span id="today-visitors">42</span>
-                    </div>
-                </div>
-            </div>
-            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: 2rem;">
-                <p>&copy; 2024 我的博客. All rights reserved. Powered by GitHub Pages</p>
-            </div>
-        </div>
-    </footer>
+              <aside class="sidebar">
+                  <div class="widget">
+                      <h3 class="widget-title">📊 统计信息</h3>
+                      <div class="stats-grid">
+                          <div class="stat-item">
+                              <span class="stat-number">42</span>
+                              <span class="stat-label">文章总数</span>
+                          </div>
+                          <div class="stat-item">
+                              <span class="stat-number">15.2K</span>
+                              <span class="stat-label">总阅读量</span>
+                          </div>
+                          <div class="stat-item">
+                              <span class="stat-number">128</span>
+                              <span class="stat-label">今日访问</span>
+                          </div>
+                          <div class="stat-item">
+                              <span class="stat-number">8</span>
+                              <span class="stat-label">标签数量</span>
+                          </div>
+                      </div>
+                  </div>
 
-    <script>
-        function showSection(sectionId) {
-            // 隐藏所有section
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
+                  <div class="widget">
+                      <h3 class="widget-title">🏷️ 热门标签</h3>
+                      <div class="tag-cloud">
+                          <a href="#" class="tag">JavaScript (12)</a>
+                          <a href="#" class="tag">Python (8)</a>
+                          <a href="#" class="tag">React (6)</a>
+                          <a href="#" class="tag">Docker (4)</a>
+                          <a href="#" class="tag">前端开发 (10)</a>
+                          <a href="#" class="tag">数据分析 (5)</a>
+                          <a href="#" class="tag">DevOps (3)</a>
+                          <a href="#" class="tag">机器学习 (7)</a>
+                      </div>
+                  </div>
 
-            // 显示目标section
-            document.getElementById(sectionId).classList.add('active');
+                  <div class="widget">
+                      <h3 class="widget-title">🔗 相关链接</h3>
+                      <ul class="links-list">
+                          <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                          <li><a href="https://stackoverflow.com" target="_blank">Stack Overflow</a></li>
+                          <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a></li>
+                          <li><a href="https://reactjs.org" target="_blank">React 官网</a></li>
+                          <li><a href="https://python.org" target="_blank">Python 官网</a></li>
+                      </ul>
+                  </div>
 
-            // 更新导航链接状态
-            const navLinks = document.querySelectorAll('.nav-links a');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
+                  <div class="widget">
+                      <h3 class="widget-title">📱 关于我</h3>
+                      <p>全栈开发工程师，热爱技术分享和开源贡献。专注于前端技术、Python开发和数据分析。</p>
+                      <div class="social-links">
+                          <a href="#" title="GitHub">📱</a>
+                          <a href="#" title="Twitter">🐦</a>
+                          <a href="#" title="LinkedIn">💼</a>
+                          <a href="#" title="Email">📧</a>
+                      </div>
+                  </div>
+              </aside>
+          </div>
+      </div>
+  </main>
 
-        // 模拟访问量计数器
-        function updateVisitorCount() {
-            const count = localStorage.getItem('visitorCount') || 1234;
-            const todayVisitors = Math.floor(Math.random() * 50) + 20;
-            
-            document.getElementById('visitor-count').textContent = count;
-            document.getElementById('today-visitors').textContent = todayVisitors;
-        }
+  <footer>
+      <div class="container">
+          <div class="footer-content">
+              <div class="footer-section">
+                  <h3>联系方式</h3>
+                  <p>📧 Email: your.email@example.com</p>
+                  <p>📱 微信: your_wechat_id</p>
+                  <p>🐙 GitHub: github.com/yourusername</p>
+                  <p>🐦 Twitter: @yourusername</p>
+              </div>
+              
+              <div class="footer-section">
+                  <h3>友情链接</h3>
+                  <p><a href="#">技术博客A</a></p>
+                  <p><a href="#">开发者社区B</a></p>
+                  <p><a href="#">学习资源C</a></p>
+                  <p><a href="#">工具网站D</a></p>
+              </div>
+              
+              <div class="footer-section">
+                  <h3>网站信息</h3>
+                  <p>建站时间: 2024年1月</p>
+                  <p>文章总数: 42篇</p>
+                  <p>总访问量: 15,234次</p>
+                  <p>今日访问: 128次</p>
+              </div>
+          </div>
+          
+          <div class="footer-bottom">
+              <p>&copy; 2024 我的博客. 保留所有权利. | 
+                 <a href="#">隐私政策</a> | 
+                 <a href="#">使用条款</a> | 
+                 Powered by Jekyll & GitHub Pages
+              </p>
+          </div>
+      </div>
+  </footer>
 
-        // 页面加载时更新访问量
-        document.addEventListener('DOMContentLoaded', function() {
-            updateVisitorCount();
-            
-            // 模拟访问量增长
-            setInterval(() => {
-                const currentCount = parseInt(localStorage.getItem('visitorCount') || 1234);
-                const newCount = currentCount + Math.floor(Math.random() * 3);
-                localStorage.setItem('visitorCount', newCount);
-                document.getElementById('visitor-count').textContent = newCount;
-            }, 30000); // 每30秒更新一次
-        });
+  <button class="scroll-top" onclick="scrollToTop()">↑</button>
 
-        // 平滑滚动效果
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+  <script>
+      // 阅读进度条
+      window.addEventListener('scroll', function() {
+          const scrollTop = window.pageYOffset;
+          const docHeight = document.body.offsetHeight - window.innerHeight;
+          const scrollPercent = (scrollTop / docHeight) * 100;
+          document.querySelector('.reading-progress').style.width = scrollPercent + '%';
+          
+          // 显示/隐藏回到顶部按钮
+          const scrollTopBtn = document.querySelector('.scroll-top');
+          if (scrollTop > 300) {
+              scrollTopBtn.classList.add('visible');
+          } else {
+              scrollTopBtn.classList.remove('visible');
+          }
+      });
+
+      // 回到顶部功能
+      function scrollToTop() {
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+          });
+      }
+
+      // 模拟每日访问量更新
+      function updateDailyViews() {
+          const viewsElement = document.querySelector('.stat-item:nth-child(3) .stat-number');
+          let currentViews = parseInt(viewsElement.textContent);
+          
+          // 模拟随机增长
+          setInterval(() => {
+              if (Math.random() > 0.7) {
+                  currentViews += Math.floor(Math.random() * 3) + 1;
+                  viewsElement.textContent = currentViews;
+              }
+          }, 30000); // 每30秒检查一次
+      }
+
+      // 页面加载完成后初始化
+      document.addEventListener('DOMContentLoaded', function() {
+          updateDailyViews();
+          
+          // 添加平滑滚动到导航链接
+          document.querySelectorAll('nav a').forEach(link => {
+              link.addEventListener('click', function(e) {
+                  // 移除所有active类
+                  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                  // 添加active类到当前链接
+                  this.classList.add('active');
+              });
+          });
+      });
+
+      // 标签点击统计
+      document.querySelectorAll('.tag').forEach(tag => {
+          tag.addEventListener('click', function(e) {
+              e.preventDefault();
+              console.log('标签点击:', this.textContent);
+              // 这里可以添加标签点击统计逻辑
+          });
+      });
+  </script>
 </body>
 </html>
