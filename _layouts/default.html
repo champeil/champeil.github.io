@@ -1,1 +1,15 @@
-
+{% include head.html %}
+<body>
+  <header>
+    <nav>
+      <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>博客</a>
+      <a href="{{ '/tags.html' | relative_url }}" {% if page.url contains 'tags.html' %}class="active"{% endif %}>标签</a>
+      <a href="{{ '/about' | relative_url }}" {% if page.url contains 'about' %}class="active"{% endif %}>关于</a>
+      <a href="{{ '/links' | relative_url }}" {% if page.url contains 'links' %}class="active"{% endif %}>相关链接</a>
+    </nav>
+  </header>
+  <main>
+    {{ content }}
+  </main>
+  {% include footer.html %}
