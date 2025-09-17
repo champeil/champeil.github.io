@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的博客 - GitHub Pages</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #667eea;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 160px);
+            padding: 2rem 0;
+        }
+
+        .section {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .blog-meta {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Links Section */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .link-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            color: #667eea;
+        }
+
+        .link-card i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            margin: 0 auto;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info h4 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #667eea;
+        }
+
+        .visitor-counter {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fas fa-code"></i> 我的博客
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('home')" class="active">首页</a></li>
+                <li><a href="#" onclick="showSection('blog')">博客</a></li>
+                <li><a href="#" onclick="showSection('links')">日常链接</a></li>
+                <li><a href="#" onclick="showSection('about')">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- 首页 -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1>欢迎来到我的博客</h1>
+                <p>分享技术、记录生活、探索世界</p>
+                <a href="#" onclick="showSection('blog')" class="cta-button">
+                    开始阅读 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <h3>最新文章</h3>
+                    <div class="blog-meta">
+                        <i class="fas fa-calendar"></i> 2024-03-15
+                    </div>
+                    <p>这里是最新文章的摘要内容，介绍文章的主要内容和亮点...</p>
+                </div>
+                <div class="blog-card">
+                    <h3>热门文章</h3>
+                    <div class="blog-meta">
+                        <i class="fas fa-eye"></i> 1,234 次阅读
+                    </div>
+                    <p>这是一篇热门文章，受到了很多读者的关注和讨论...</p>
+                </div>
+                <div class="blog-card">
+                    <h3>推荐阅读</h3>
+                    <div class="blog-meta">
+                        <i class="fas fa-star"></i> 编辑推荐
+                    </div>
+                    <p>精心挑选的优质内容，值得深入阅读和思考...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 博客 -->
+        <section id="blog" class="section">
+            <h2><i class="fas fa-blog"></i> 博客文章</h2>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <h3>JavaScript 进阶技巧</h3>
+                    <div class="blog-meta">
+                        <i class="fas fa-calendar"></i> 2024-03-15 | 
+                        <i class="fas fa-tag"></i> 前端开发
+                    </div>
+                    <p>深入探讨JavaScript的高级特性，包括闭包、原型链、异步编程等核心概念...</p>
+                    <a href="#" class="cta-button" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.9rem;">阅读全文</a>
+                </div>
+                <div class="blog-card">
+                    <h3>CSS Grid 布局完全指南</h3>
+                    <div class="blog-meta">
+                        <i class="fas fa-calendar"></i> 2024-03-10 | 
+                        <i class="fas fa-tag"></i> CSS
+                    </div>
+                    <p>从基础到进阶，全面掌握CSS Grid布局系统，打造响应式网页设计...</p>
+                    <a href="#" class="cta-button" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.9rem;">阅读全文</a>
+                </div>
+                <div class="blog-card">
+                    <h3>React Hooks 最佳实践</h3>
+                    <div class="blog-meta">
+                        <i class="fas fa-calendar"></i> 2024-03-05 | 
+                        <i class="fas fa-tag"></i> React
+                    </div>
+                    <p>分享React Hooks的使用技巧和最佳实践，提升开发效率...</p>
+                    <a href="#" class="cta-button" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.9rem;">阅读全文</a>
+                </div>
+                <div class="blog-card">
+                    <h3>Node.js 性能优化</h3>
+                    <div class="blog-meta">
+                        <i class="fas fa-calendar"></i> 2024-02-28 | 
+                        <i class="fas fa-tag"></i> 后端开发
+                    </div>
+                    <p>探讨Node.js应用的性能优化策略，包括内存管理、并发处理等...</p>
+                    <a href="#" class="cta-button" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.9rem;">阅读全文</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 日常链接 -->
+        <section id="links" class="section">
+            <h2><i class="fas fa-link"></i> 日常网页链接</h2>
+            <div class="links-grid">
+                <a href="https://github.com" class="link-card" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <h3>GitHub</h3>
+                    <p>代码托管与协作平台</p>
+                </a>
+                <a href="https://stackoverflow.com" class="link-card" target="_blank">
+                    <i class="fab fa-stack-overflow"></i>
+                    <h3>Stack Overflow</h3>
+                    <p>程序员问答社区</p>
+                </a>
+                <a href="https://developer.mozilla.org" class="link-card" target="_blank">
+                    <i class="fas fa-book"></i>
+                    <h3>MDN Web Docs</h3>
+                    <p>Web开发文档</p>
+                </a>
+                <a href="https://codepen.io" class="link-card" target="_blank">
+                    <i class="fab fa-codepen"></i>
+                    <h3>CodePen</h3>
+                    <p>前端代码展示平台</p>
+                </a>
+                <a href="https://dribbble.com" class="link-card" target="_blank">
+                    <i class="fab fa-dribbble"></i>
+                    <h3>Dribbble</h3>
+                    <p>设计灵感社区</p>
+                </a>
+                <a href="https://unsplash.com" class="link-card" target="_blank">
+                    <i class="fas fa-camera"></i>
+                    <h3>Unsplash</h3>
+                    <p>免费高质量图片</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- 关于 -->
+        <section id="about" class="section">
+            <h2><i class="fas fa-user"></i> 关于我</h2>
+            <div class="about-content">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <h3>你好，我是博主</h3>
+                    <p>我是一名热爱技术的开发者，专注于前端和全栈开发。喜欢探索新技术，分享学习心得，记录生活点滴。</p>
+                    <p>在这个博客中，我会分享我的技术文章、学习笔记、项目经验以及生活感悟。希望能够帮助到更多的朋友，也欢迎大家与我交流讨论。</p>
+                    
+                    <div class="skills">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Vue.js</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">HTML</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h4><i class="fas fa-envelope"></i> 联系方式</h4>
+                    <a href="mailto:your.email@example.com">
+                        <i class="fas fa-envelope"></i> your.email@example.com
+                    </a>
+                    <a href="https://github.com/yourusername" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://twitter.com/yourusername" target="_blank">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+                <div class="contact-info">
+                    <h4><i class="fas fa-chart-line"></i> 网站统计</h4>
+                    <div class="visitor-counter">
+                        <i class="fas fa-eye"></i> 
+                        总访问量: <span id="visitor-count">1,234</span>
+                    </div>
+                    <div class="visitor-counter">
+                        <i class="fas fa-users"></i> 
+                        今日访客: <span id="today-visitors">42</span>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: 2rem;">
+                <p>&copy; 2024 我的博客. All rights reserved. Powered by GitHub Pages</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // 隐藏所有section
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 显示目标section
+            document.getElementById(sectionId).classList.add('active');
+
+            // 更新导航链接状态
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // 模拟访问量计数器
+        function updateVisitorCount() {
+            const count = localStorage.getItem('visitorCount') || 1234;
+            const todayVisitors = Math.floor(Math.random() * 50) + 20;
+            
+            document.getElementById('visitor-count').textContent = count;
+            document.getElementById('today-visitors').textContent = todayVisitors;
+        }
+
+        // 页面加载时更新访问量
+        document.addEventListener('DOMContentLoaded', function() {
+            updateVisitorCount();
+            
+            // 模拟访问量增长
+            setInterval(() => {
+                const currentCount = parseInt(localStorage.getItem('visitorCount') || 1234);
+                const newCount = currentCount + Math.floor(Math.random() * 3);
+                localStorage.setItem('visitorCount', newCount);
+                document.getElementById('visitor-count').textContent = newCount;
+            }, 30000); // 每30秒更新一次
+        });
+
+        // 平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
