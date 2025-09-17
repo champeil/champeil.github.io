@@ -1,1 +1,28 @@
-
+---
+layout: default
+title: 标签
+---
+<h1>标签</h1>
+<p>按标签浏览文章。</p>
+<div class="tag-cloud">
+  {% for tag in site.tags %}
+    {% assign tag_name = tag[0] %}
+    {% assign tag_count = tag[1] | size %}
+    <a href="#{{ tag_name }}">{{ tag_name }} <span class="count">{{ tag_count }}</span></a>
+  {% endfor %}
+</div>
+<hr style="margin:2.2rem 0;">
+{% for tag in site.tags %}
+  {% assign tag_name = tag[0] %}
+  <h2 id="{{ tag_name }}">{{ tag_name }}</h2>
+  <ul class="post-list">
+    {% for post in tag[1] %}
+      <li class="post-item">
+        <h2 style="font-size:1.05rem;"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <div class="post-meta">
+          <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}
