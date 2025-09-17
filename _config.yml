@@ -7,7 +7,6 @@ markdown: kramdown
 kramdown:
   input: GFM
 permalink: /:year/:month/:day/:title/
-paginate: 0
 plugins: []   # 不使用自定义插件，保证 GitHub Pages 兼容
 collections:
 exclude:
