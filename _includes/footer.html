@@ -1,1 +1,20 @@
-
+<footer>
+  <div class="inner">
+    <div class="divider"></div>
+    <ul class="contact-list">
+      <li><strong>联系：</strong></li>
+      <li><a href="mailto:you@example.com">Email</a></li>
+      <li><a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://twitter.com/yourhandle" target="_blank" rel="noopener">Twitter/X</a></li>
+      <li><a href="https://weibo.com/你的" target="_blank" rel="noopener">Weibo</a></li>
+      <li><a href="weixin://dl/chat?yourid">WeChat</a></li>
+    </ul>
+    <div class="views-box">
+      今日全站浏览量：<span id="daily-views-number">...</span>
+      <span style="margin-left:1rem;">订阅：<a class="rss-badge" href="{{ '/feed.xml' | relative_url }}">RSS</a></span>
+    </div>
+    <p style="margin-top:1.2rem;">© {{ site.time | date: "%Y" }} {{ site.author }} · 由 GitHub Pages 驱动</p>
+  </div>
+</footer>
+</body>
+</html>
