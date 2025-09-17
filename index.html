@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的博客 - 首页</title>
+  <title>我的博客</title>
   <style>
       * {
           margin: 0;
@@ -12,7 +12,7 @@
       }
 
       body {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
           line-height: 1.6;
           color: #333;
           background-color: #f8f9fa;
@@ -24,196 +24,159 @@
           padding: 0 20px;
       }
 
-      /* Header */
       header {
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: white;
           padding: 2rem 0;
+          text-align: center;
           box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       }
 
-      .header-content {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-      }
-
-      .logo h1 {
+      .header-content h1 {
           font-size: 2.5rem;
-          font-weight: 300;
           margin-bottom: 0.5rem;
+          font-weight: 300;
       }
 
-      .logo p {
-          opacity: 0.9;
+      .header-content p {
           font-size: 1.1rem;
+          opacity: 0.9;
       }
 
-      nav ul {
-          list-style: none;
+      nav {
+          background: white;
+          padding: 1rem 0;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+          position: sticky;
+          top: 0;
+          z-index: 100;
+      }
+
+      .nav-container {
           display: flex;
+          justify-content: center;
           gap: 2rem;
       }
 
-      nav a {
-          color: white;
-          text-decoration: none;
-          font-weight: 500;
+      .nav-item {
           padding: 0.5rem 1rem;
-          border-radius: 25px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 1rem;
+          color: #666;
           transition: all 0.3s ease;
+          border-radius: 5px;
       }
 
-      nav a:hover, nav a.active {
-          background: rgba(255,255,255,0.2);
-          transform: translateY(-2px);
+      .nav-item:hover, .nav-item.active {
+          background: #667eea;
+          color: white;
       }
 
-      /* Main Content */
       main {
-          padding: 3rem 0;
+          padding: 2rem 0;
+          min-height: 60vh;
       }
 
-      .content-grid {
+      .section {
+          display: none;
+          animation: fadeIn 0.5s ease-in;
+      }
+
+      .section.active {
+          display: block;
+      }
+
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+
+      .blog-grid {
           display: grid;
           grid-template-columns: 2fr 1fr;
-          gap: 3rem;
-          margin-bottom: 3rem;
+          gap: 2rem;
+          margin-top: 2rem;
       }
 
-      /* Blog Posts */
       .blog-posts {
           background: white;
-          border-radius: 12px;
+          border-radius: 10px;
           padding: 2rem;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       }
 
-      .section-title {
-          font-size: 1.8rem;
-          margin-bottom: 2rem;
-          color: #2c3e50;
-          border-bottom: 3px solid #667eea;
-          padding-bottom: 0.5rem;
-      }
-
-      .post-item {
-          padding: 1.5rem 0;
+      .blog-post {
           border-bottom: 1px solid #eee;
+          padding: 1.5rem 0;
+          cursor: pointer;
           transition: all 0.3s ease;
       }
 
-      .post-item:last-child {
-          border-bottom: none;
-      }
-
-      .post-item:hover {
-          transform: translateX(10px);
+      .blog-post:hover {
           background: #f8f9fa;
           margin: 0 -1rem;
-          padding-left: 2rem;
+          padding: 1.5rem 1rem;
           border-radius: 8px;
+      }
+
+      .blog-post:last-child {
+          border-bottom: none;
       }
 
       .post-title {
           font-size: 1.3rem;
+          color: #333;
           margin-bottom: 0.5rem;
-      }
-
-      .post-title a {
-          color: #2c3e50;
-          text-decoration: none;
-          transition: color 0.3s ease;
-      }
-
-      .post-title a:hover {
-          color: #667eea;
+          font-weight: 600;
       }
 
       .post-meta {
           color: #666;
           font-size: 0.9rem;
-          margin-bottom: 0.8rem;
+          margin-bottom: 0.5rem;
       }
 
       .post-excerpt {
           color: #555;
-          line-height: 1.6;
+          line-height: 1.5;
       }
 
       .post-tags {
-          margin-top: 1rem;
+          margin-top: 0.5rem;
       }
 
       .tag {
           display: inline-block;
-          background: #e3f2fd;
-          color: #1976d2;
-          padding: 0.2rem 0.6rem;
+          background: #e9ecef;
+          color: #495057;
+          padding: 0.2rem 0.5rem;
           border-radius: 15px;
           font-size: 0.8rem;
           margin-right: 0.5rem;
-          margin-bottom: 0.3rem;
-          text-decoration: none;
-          transition: all 0.3s ease;
+          margin-top: 0.2rem;
       }
 
-      .tag:hover {
-          background: #1976d2;
-          color: white;
-          transform: scale(1.05);
-      }
-
-      /* Sidebar */
       .sidebar {
           display: flex;
           flex-direction: column;
-          gap: 2rem;
+          gap: 1.5rem;
       }
 
       .widget {
           background: white;
-          border-radius: 12px;
+          border-radius: 10px;
           padding: 1.5rem;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       }
 
-      .widget-title {
-          font-size: 1.2rem;
+      .widget h3 {
           margin-bottom: 1rem;
-          color: #2c3e50;
-          border-bottom: 2px solid #667eea;
-          padding-bottom: 0.5rem;
+          color: #333;
+          font-size: 1.1rem;
       }
 
-      /* Stats */
-      .stats-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1rem;
-      }
-
-      .stat-item {
-          text-align: center;
-          padding: 1rem;
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          color: white;
-          border-radius: 8px;
-      }
-
-      .stat-number {
-          font-size: 1.8rem;
-          font-weight: bold;
-          display: block;
-      }
-
-      .stat-label {
-          font-size: 0.9rem;
-          opacity: 0.9;
-      }
-
-      /* Tag Cloud */
       .tag-cloud {
           display: flex;
           flex-wrap: wrap;
@@ -221,436 +184,568 @@
       }
 
       .tag-cloud .tag {
-          font-size: 0.9rem;
-      }
-
-      /* Links */
-      .links-list {
-          list-style: none;
-      }
-
-      .links-list li {
-          margin-bottom: 0.8rem;
-      }
-
-      .links-list a {
-          color: #667eea;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          padding: 0.5rem;
-          border-radius: 6px;
+          cursor: pointer;
           transition: all 0.3s ease;
       }
 
-      .links-list a:hover {
-          background: #f0f4ff;
-          transform: translateX(5px);
-      }
-
-      .links-list a::before {
-          content: "🔗";
-          margin-right: 0.5rem;
-      }
-
-      /* Footer */
-      footer {
-          background: #2c3e50;
+      .tag-cloud .tag:hover {
+          background: #667eea;
           color: white;
-          padding: 2rem 0;
-          margin-top: 3rem;
       }
 
-      .footer-content {
+      .stats-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
-          margin-bottom: 2rem;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
       }
 
-      .footer-section h3 {
-          margin-bottom: 1rem;
-          color: #ecf0f1;
+      .stat-item {
+          text-align: center;
+          padding: 1rem;
+          background: #f8f9fa;
+          border-radius: 8px;
       }
 
-      .footer-section p, .footer-section a {
-          color: #bdc3c7;
-          text-decoration: none;
-          line-height: 1.8;
-      }
-
-      .footer-section a:hover {
+      .stat-number {
+          font-size: 1.5rem;
+          font-weight: bold;
           color: #667eea;
       }
 
-      .social-links {
-          display: flex;
+      .stat-label {
+          font-size: 0.9rem;
+          color: #666;
+      }
+
+      .about-content, .links-content {
+          background: white;
+          border-radius: 10px;
+          padding: 2rem;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+          line-height: 1.8;
+      }
+
+      .links-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
           gap: 1rem;
           margin-top: 1rem;
       }
 
-      .social-links a {
-          display: inline-block;
-          width: 40px;
-          height: 40px;
-          background: #34495e;
-          border-radius: 50%;
-          text-align: center;
-          line-height: 40px;
+      .link-item {
+          background: #f8f9fa;
+          padding: 1rem;
+          border-radius: 8px;
+          text-decoration: none;
+          color: #333;
           transition: all 0.3s ease;
       }
 
-      .social-links a:hover {
+      .link-item:hover {
           background: #667eea;
-          transform: translateY(-3px);
+          color: white;
+          transform: translateY(-2px);
       }
 
-      .footer-bottom {
-          text-align: center;
-          padding-top: 2rem;
-          border-top: 1px solid #34495e;
-          color: #95a5a6;
+      .post-detail {
+          background: white;
+          border-radius: 10px;
+          padding: 2rem;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+          line-height: 1.8;
       }
 
-      /* Responsive */
-      @media (max-width: 768px) {
-          .header-content {
-              flex-direction: column;
-              gap: 1rem;
-          }
-
-          .content-grid {
-              grid-template-columns: 1fr;
-              gap: 2rem;
-          }
-
-          nav ul {
-              flex-wrap: wrap;
-              justify-content: center;
-          }
-
-          .stats-grid {
-              grid-template-columns: 1fr;
-          }
-
-          .footer-content {
-              grid-template-columns: 1fr;
-              text-align: center;
-          }
+      .post-detail h1 {
+          color: #333;
+          margin-bottom: 1rem;
       }
 
-      /* Reading Progress */
-      .reading-progress {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 0%;
-          height: 3px;
-          background: linear-gradient(to right, #667eea, #764ba2);
-          z-index: 1000;
-          transition: width 0.3s ease;
+      .post-detail h2 {
+          color: #555;
+          margin: 1.5rem 0 1rem 0;
       }
 
-      /* Scroll to top */
-      .scroll-top {
-          position: fixed;
-          bottom: 30px;
-          right: 30px;
-          width: 50px;
-          height: 50px;
+      .post-detail p {
+          margin-bottom: 1rem;
+      }
+
+      .back-btn {
           background: #667eea;
           color: white;
           border: none;
-          border-radius: 50%;
+          padding: 0.5rem 1rem;
+          border-radius: 5px;
           cursor: pointer;
-          opacity: 0;
-          visibility: hidden;
-          transition: all 0.3s ease;
-          font-size: 1.2rem;
+          margin-bottom: 1rem;
       }
 
-      .scroll-top.visible {
-          opacity: 1;
-          visibility: visible;
+      footer {
+          background: #333;
+          color: white;
+          text-align: center;
+          padding: 2rem 0;
+          margin-top: 3rem;
       }
 
-      .scroll-top:hover {
-          background: #5a6fd8;
-          transform: translateY(-3px);
+      .contact-info {
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          margin-bottom: 1rem;
+          flex-wrap: wrap;
+      }
+
+      .contact-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+      }
+
+      .contact-item a {
+          color: #ccc;
+          text-decoration: none;
+      }
+
+      .contact-item a:hover {
+          color: white;
+      }
+
+      @media (max-width: 768px) {
+          .blog-grid {
+              grid-template-columns: 1fr;
+          }
+          
+          .nav-container {
+              flex-wrap: wrap;
+              gap: 1rem;
+          }
+          
+          .contact-info {
+              flex-direction: column;
+              gap: 1rem;
+          }
+          
+          .header-content h1 {
+              font-size: 2rem;
+          }
       }
   </style>
 </head>
 <body>
-  <div class="reading-progress"></div>
-  
   <header>
       <div class="container">
           <div class="header-content">
-              <div class="logo">
-                  <h1>我的博客</h1>
-                  <p>分享技术与生活的点点滴滴</p>
-              </div>
-              <nav>
-                  <ul>
-                      <li><a href="#" class="active">首页</a></li>
-                      <li><a href="#blog">博客</a></li>
-                      <li><a href="#about">关于</a></li>
-                      <li><a href="#links">友链</a></li>
-                      <li><a href="#contact">联系</a></li>
-                  </ul>
-              </nav>
+              <h1>我的博客</h1>
+              <p>分享技术、思考与生活</p>
           </div>
       </div>
   </header>
 
-  <main>
+  <nav>
       <div class="container">
-          <div class="content-grid">
-              <section class="blog-posts">
-                  <h2 class="section-title">最新文章</h2>
-                  
-                  <article class="post-item">
-                      <h3 class="post-title">
-                          <a href="#">深入理解JavaScript闭包机制</a>
-                      </h3>
-                      <div class="post-meta">
-                          <span>📅 2024-03-15</span>
-                          <span>👁️ 1,234 次阅读</span>
-                          <span>💬 12 评论</span>
-                      </div>
-                      <p class="post-excerpt">
-                          闭包是JavaScript中一个重要但常被误解的概念。本文将通过实例深入解析闭包的工作原理，帮助你彻底理解这一核心概念...
-                      </p>
-                      <div class="post-tags">
-                          <a href="#" class="tag">JavaScript</a>
-                          <a href="#" class="tag">前端开发</a>
-                          <a href="#" class="tag">编程基础</a>
-                      </div>
-                  </article>
+          <div class="nav-container">
+              <button class="nav-item active" onclick="showSection('blog')">博客</button>
+              <button class="nav-item" onclick="showSection('about')">关于</button>
+              <button class="nav-item" onclick="showSection('links')">相关链接</button>
+          </div>
+      </div>
+  </nav>
 
-                  <article class="post-item">
-                      <h3 class="post-title">
-                          <a href="#">React Hooks 最佳实践指南</a>
-                      </h3>
-                      <div class="post-meta">
-                          <span>📅 2024-03-12</span>
-                          <span>👁️ 2,156 次阅读</span>
-                          <span>💬 8 评论</span>
-                      </div>
-                      <p class="post-excerpt">
-                          React Hooks 改变了我们编写React组件的方式。本文总结了使用Hooks的最佳实践，包括性能优化和常见陷阱...
-                      </p>
-                      <div class="post-tags">
-                          <a href="#" class="tag">React</a>
-                          <a href="#" class="tag">Hooks</a>
-                          <a href="#" class="tag">前端框架</a>
-                      </div>
-                  </article>
-
-                  <article class="post-item">
-                      <h3 class="post-title">
-                          <a href="#">Docker容器化部署实战</a>
-                      </h3>
-                      <div class="post-meta">
-                          <span>📅 2024-03-10</span>
-                          <span>👁️ 1,876 次阅读</span>
-                          <span>💬 15 评论</span>
-                      </div>
-                      <p class="post-excerpt">
-                          容器化技术已成为现代应用部署的标准。本文将介绍如何使用Docker进行应用容器化，包括Dockerfile编写和多阶段构建...
-                      </p>
-                      <div class="post-tags">
-                          <a href="#" class="tag">Docker</a>
-                          <a href="#" class="tag">DevOps</a>
-                          <a href="#" class="tag">容器化</a>
-                      </div>
-                  </article>
-
-                  <article class="post-item">
-                      <h3 class="post-title">
-                          <a href="#">Python数据分析入门教程</a>
-                      </h3>
-                      <div class="post-meta">
-                          <span>📅 2024-03-08</span>
-                          <span>👁️ 3,421 次阅读</span>
-                          <span>💬 22 评论</span>
-                      </div>
-                      <p class="post-excerpt">
-                          数据分析是当今最热门的技能之一。本教程将带你从零开始学习使用Python进行数据分析，包括pandas、numpy等核心库的使用...
-                      </p>
-                      <div class="post-tags">
-                          <a href="#" class="tag">Python</a>
-                          <a href="#" class="tag">数据分析</a>
-                          <a href="#" class="tag">机器学习</a>
-                      </div>
-                  </article>
-              </section>
-
-              <aside class="sidebar">
+  <main class="container">
+      <!-- 博客首页 -->
+      <div id="blog" class="section active">
+          <div class="blog-grid">
+              <div class="blog-posts">
+                  <h2>最新文章</h2>
+                  <div id="posts-container">
+                      <!-- 文章将通过JavaScript动态加载 -->
+                  </div>
+              </div>
+              
+              <div class="sidebar">
                   <div class="widget">
-                      <h3 class="widget-title">📊 统计信息</h3>
+                      <h3>统计信息</h3>
                       <div class="stats-grid">
                           <div class="stat-item">
-                              <span class="stat-number">42</span>
-                              <span class="stat-label">文章总数</span>
+                              <div class="stat-number" id="total-posts">0</div>
+                              <div class="stat-label">总文章</div>
                           </div>
                           <div class="stat-item">
-                              <span class="stat-number">15.2K</span>
-                              <span class="stat-label">总阅读量</span>
+                              <div class="stat-number" id="total-views">0</div>
+                              <div class="stat-label">总阅读</div>
                           </div>
                           <div class="stat-item">
-                              <span class="stat-number">128</span>
-                              <span class="stat-label">今日访问</span>
+                              <div class="stat-number" id="today-views">0</div>
+                              <div class="stat-label">今日阅读</div>
                           </div>
                           <div class="stat-item">
-                              <span class="stat-number">8</span>
-                              <span class="stat-label">标签数量</span>
+                              <div class="stat-number" id="total-tags">0</div>
+                              <div class="stat-label">标签数</div>
                           </div>
                       </div>
                   </div>
-
+                  
                   <div class="widget">
-                      <h3 class="widget-title">🏷️ 热门标签</h3>
-                      <div class="tag-cloud">
-                          <a href="#" class="tag">JavaScript (12)</a>
-                          <a href="#" class="tag">Python (8)</a>
-                          <a href="#" class="tag">React (6)</a>
-                          <a href="#" class="tag">Docker (4)</a>
-                          <a href="#" class="tag">前端开发 (10)</a>
-                          <a href="#" class="tag">数据分析 (5)</a>
-                          <a href="#" class="tag">DevOps (3)</a>
-                          <a href="#" class="tag">机器学习 (7)</a>
+                      <h3>标签云</h3>
+                      <div class="tag-cloud" id="tag-cloud">
+                          <!-- 标签将通过JavaScript动态生成 -->
                       </div>
                   </div>
+              </div>
+          </div>
+      </div>
 
-                  <div class="widget">
-                      <h3 class="widget-title">🔗 相关链接</h3>
-                      <ul class="links-list">
-                          <li><a href="https://github.com" target="_blank">GitHub</a></li>
-                          <li><a href="https://stackoverflow.com" target="_blank">Stack Overflow</a></li>
-                          <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a></li>
-                          <li><a href="https://reactjs.org" target="_blank">React 官网</a></li>
-                          <li><a href="https://python.org" target="_blank">Python 官网</a></li>
-                      </ul>
-                  </div>
+      <!-- 文章详情页 -->
+      <div id="post-detail" class="section">
+          <button class="back-btn" onclick="showSection('blog')">← 返回博客</button>
+          <div class="post-detail" id="post-content">
+              <!-- 文章内容将通过JavaScript动态加载 -->
+          </div>
+      </div>
 
-                  <div class="widget">
-                      <h3 class="widget-title">📱 关于我</h3>
-                      <p>全栈开发工程师，热爱技术分享和开源贡献。专注于前端技术、Python开发和数据分析。</p>
-                      <div class="social-links">
-                          <a href="#" title="GitHub">📱</a>
-                          <a href="#" title="Twitter">🐦</a>
-                          <a href="#" title="LinkedIn">💼</a>
-                          <a href="#" title="Email">📧</a>
-                      </div>
-                  </div>
-              </aside>
+      <!-- 关于页面 -->
+      <div id="about" class="section">
+          <div class="about-content">
+              <h2>关于我</h2>
+              <p>欢迎来到我的个人博客！我是一名热爱技术的开发者，专注于Web开发、人工智能和开源项目。</p>
+              <p>在这里，我会分享我的技术心得、项目经验以及对行业趋势的思考。希望我的文章能够对你有所帮助。</p>
+              
+              <h3>技能领域</h3>
+              <ul>
+                  <li>前端开发：JavaScript, React, Vue.js</li>
+                  <li>后端开发：Node.js, Python, Java</li>
+                  <li>数据库：MySQL, MongoDB, Redis</li>
+                  <li>云服务：AWS, Docker, Kubernetes</li>
+              </ul>
+              
+              <h3>联系方式</h3>
+              <p>如果你想与我交流或合作，欢迎通过以下方式联系我：</p>
+              <ul>
+                  <li>邮箱：your.email@example.com</li>
+                  <li>GitHub：github.com/yourusername</li>
+                  <li>微信：your_wechat_id</li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- 相关链接页面 -->
+      <div id="links" class="section">
+          <div class="links-content">
+              <h2>相关链接</h2>
+              <p>这里收集了一些我常用的工具、学习资源和优秀的网站。</p>
+              
+              <h3>开发工具</h3>
+              <div class="links-grid">
+                  <a href="https://github.com" class="link-item" target="_blank">
+                      <h4>GitHub</h4>
+                      <p>全球最大的代码托管平台</p>
+                  </a>
+                  <a href="https://stackoverflow.com" class="link-item" target="_blank">
+                      <h4>Stack Overflow</h4>
+                      <p>程序员问答社区</p>
+                  </a>
+                  <a href="https://developer.mozilla.org" class="link-item" target="_blank">
+                      <h4>MDN Web Docs</h4>
+                      <p>Web开发文档和教程</p>
+                  </a>
+                  <a href="https://www.npmjs.com" class="link-item" target="_blank">
+                      <h4>npm</h4>
+                      <p>Node.js包管理器</p>
+                  </a>
+              </div>
+              
+              <h3>学习资源</h3>
+              <div class="links-grid">
+                  <a href="https://www.coursera.org" class="link-item" target="_blank">
+                      <h4>Coursera</h4>
+                      <p>在线课程平台</p>
+                  </a>
+                  <a href="https://www.freecodecamp.org" class="link-item" target="_blank">
+                      <h4>freeCodeCamp</h4>
+                      <p>免费编程学习平台</p>
+                  </a>
+                  <a href="https://leetcode.com" class="link-item" target="_blank">
+                      <h4>LeetCode</h4>
+                      <p>算法练习平台</p>
+                  </a>
+                  <a href="https://www.youtube.com" class="link-item" target="_blank">
+                      <h4>YouTube</h4>
+                      <p>技术视频教程</p>
+                  </a>
+              </div>
           </div>
       </div>
   </main>
 
   <footer>
       <div class="container">
-          <div class="footer-content">
-              <div class="footer-section">
-                  <h3>联系方式</h3>
-                  <p>📧 Email: your.email@example.com</p>
-                  <p>📱 微信: your_wechat_id</p>
-                  <p>🐙 GitHub: github.com/yourusername</p>
-                  <p>🐦 Twitter: @yourusername</p>
+          <div class="contact-info">
+              <div class="contact-item">
+                  <span>📧</span>
+                  <a href="mailto:your.email@example.com">your.email@example.com</a>
               </div>
-              
-              <div class="footer-section">
-                  <h3>友情链接</h3>
-                  <p><a href="#">技术博客A</a></p>
-                  <p><a href="#">开发者社区B</a></p>
-                  <p><a href="#">学习资源C</a></p>
-                  <p><a href="#">工具网站D</a></p>
+              <div class="contact-item">
+                  <span>🐙</span>
+                  <a href="https://github.com/yourusername" target="_blank">GitHub</a>
               </div>
-              
-              <div class="footer-section">
-                  <h3>网站信息</h3>
-                  <p>建站时间: 2024年1月</p>
-                  <p>文章总数: 42篇</p>
-                  <p>总访问量: 15,234次</p>
-                  <p>今日访问: 128次</p>
+              <div class="contact-item">
+                  <span>💬</span>
+                  <span>微信：your_wechat_id</span>
+              </div>
+              <div class="contact-item">
+                  <span>📱</span>
+                  <span>电话：+86 138-0000-0000</span>
               </div>
           </div>
-          
-          <div class="footer-bottom">
-              <p>&copy; 2024 我的博客. 保留所有权利. | 
-                 <a href="#">隐私政策</a> | 
-                 <a href="#">使用条款</a> | 
-                 Powered by Jekyll & GitHub Pages
-              </p>
-          </div>
+          <p>&copy; 2025 我的博客. All rights reserved.</p>
       </div>
   </footer>
 
-  <button class="scroll-top" onclick="scrollToTop()">↑</button>
-
   <script>
-      // 阅读进度条
-      window.addEventListener('scroll', function() {
-          const scrollTop = window.pageYOffset;
-          const docHeight = document.body.offsetHeight - window.innerHeight;
-          const scrollPercent = (scrollTop / docHeight) * 100;
-          document.querySelector('.reading-progress').style.width = scrollPercent + '%';
-          
-          // 显示/隐藏回到顶部按钮
-          const scrollTopBtn = document.querySelector('.scroll-top');
-          if (scrollTop > 300) {
-              scrollTopBtn.classList.add('visible');
-          } else {
-              scrollTopBtn.classList.remove('visible');
-          }
+      // 博客数据存储
+      let blogPosts = [];
+      let viewStats = {
+          totalViews: 0,
+          todayViews: 0,
+          lastViewDate: new Date().toDateString()
+      };
+
+      // 初始化
+      document.addEventListener('DOMContentLoaded', function() {
+          loadBlogPosts();
+          loadViewStats();
+          updateStats();
+          generateTagCloud();
       });
 
-      // 回到顶部功能
-      function scrollToTop() {
-          window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
+      // 导航功能
+      function showSection(sectionId) {
+          // 隐藏所有section
+          document.querySelectorAll('.section').forEach(section => {
+              section.classList.remove('active');
+          });
+          
+          // 显示目标section
+          document.getElementById(sectionId).classList.add('active');
+          
+          // 更新导航状态
+          document.querySelectorAll('.nav-item').forEach(item => {
+              item.classList.remove('active');
+          });
+          event.target.classList.add('active');
+      }
+
+      // 加载博客文章
+      function loadBlogPosts() {
+          // 示例数据 - 实际使用时这些数据会从markdown文件中解析
+          blogPosts = [
+              {
+                  id: 1,
+                  title: "如何使用GitHub Pages搭建个人博客",
+                  date: "2025-01-15",
+                  tags: ["GitHub", "博客", "教程"],
+                  excerpt: "本文将详细介绍如何使用GitHub Pages免费搭建个人博客，包括域名配置、主题选择等内容...",
+                  content: `# 如何使用GitHub Pages搭建个人博客
+
+GitHub Pages是GitHub提供的免费静态网站托管服务，非常适合搭建个人博客。
+
+## 步骤一：创建仓库
+1. 在GitHub上创建一个新仓库
+2. 仓库名格式：username.github.io
+
+## 步骤二：上传网站文件
+将HTML、CSS、JS文件上传到仓库
+
+## 步骤三：配置域名（可选）
+可以配置自定义域名...`,
+                  views: 156
+              },
+              {
+                  id: 2,
+                  title: "JavaScript异步编程最佳实践",
+                  date: "2025-01-10",
+                  tags: ["JavaScript", "异步", "编程"],
+                  excerpt: "深入探讨JavaScript中的异步编程模式，包括Promise、async/await等现代异步解决方案...",
+                  content: `# JavaScript异步编程最佳实践
+
+异步编程是JavaScript的核心特性之一。
+
+## Promise的使用
+Promise提供了更好的异步处理方式...
+
+## async/await语法
+ES2017引入的async/await让异步代码更加简洁...`,
+                  views: 89
+              },
+              {
+                  id: 3,
+                  title: "CSS Grid布局完全指南",
+                  date: "2025-01-05",
+                  tags: ["CSS", "布局", "Grid"],
+                  excerpt: "CSS Grid是现代Web布局的强大工具，本文将全面介绍Grid布局的使用方法和最佳实践...",
+                  content: `# CSS Grid布局完全指南
+
+CSS Grid Layout是二维布局系统...
+
+## 基本概念
+- Grid Container
+- Grid Item
+- Grid Lines
+
+## 实际应用
+创建复杂的响应式布局...`,
+                  views: 234
+              }
+          ];
+
+          renderBlogPosts();
+      }
+
+      // 渲染博客文章列表
+      function renderBlogPosts() {
+          const container = document.getElementById('posts-container');
+          container.innerHTML = '';
+
+          blogPosts.forEach(post => {
+              const postElement = document.createElement('div');
+              postElement.className = 'blog-post';
+              postElement.onclick = () => showPost(post.id);
+              
+              postElement.innerHTML = `
+                  <div class="post-title">${post.title}</div>
+                  <div class="post-meta">
+                      📅 ${post.date} | 👁️ ${post.views} 次阅读
+                  </div>
+                  <div class="post-excerpt">${post.excerpt}</div>
+                  <div class="post-tags">
+                      ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                  </div>
+              `;
+              
+              container.appendChild(postElement);
           });
       }
 
-      // 模拟每日访问量更新
-      function updateDailyViews() {
-          const viewsElement = document.querySelector('.stat-item:nth-child(3) .stat-number');
-          let currentViews = parseInt(viewsElement.textContent);
+      // 显示文章详情
+      function showPost(postId) {
+          const post = blogPosts.find(p => p.id === postId);
+          if (!post) return;
+
+          // 增加阅读量
+          post.views++;
+          incrementViewStats();
           
-          // 模拟随机增长
-          setInterval(() => {
-              if (Math.random() > 0.7) {
-                  currentViews += Math.floor(Math.random() * 3) + 1;
-                  viewsElement.textContent = currentViews;
-              }
-          }, 30000); // 每30秒检查一次
+          // 渲染文章内容
+          const contentContainer = document.getElementById('post-content');
+          contentContainer.innerHTML = `
+              <h1>${post.title}</h1>
+              <div class="post-meta">
+                  📅 ${post.date} | 👁️ ${post.views} 次阅读 | 
+                  ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+              </div>
+              <div style="margin-top: 2rem;">
+                  ${post.content.replace(/\n/g, '<br>').replace(/## (.*)/g, '<h2>$1</h2>').replace(/# (.*)/g, '<h1>$1</h1>')}
+              </div>
+          `;
+          
+          showSection('post-detail');
+          updateStats();
       }
 
-      // 页面加载完成后初始化
-      document.addEventListener('DOMContentLoaded', function() {
-          updateDailyViews();
+      // 生成标签云
+      function generateTagCloud() {
+          const tagContainer = document.getElementById('tag-cloud');
+          const tagCounts = {};
           
-          // 添加平滑滚动到导航链接
-          document.querySelectorAll('nav a').forEach(link => {
-              link.addEventListener('click', function(e) {
-                  // 移除所有active类
-                  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-                  // 添加active类到当前链接
-                  this.classList.add('active');
+          // 统计标签出现次数
+          blogPosts.forEach(post => {
+              post.tags.forEach(tag => {
+                  tagCounts[tag] = (tagCounts[tag] || 0) + 1;
               });
           });
-      });
-
-      // 标签点击统计
-      document.querySelectorAll('.tag').forEach(tag => {
-          tag.addEventListener('click', function(e) {
-              e.preventDefault();
-              console.log('标签点击:', this.textContent);
-              // 这里可以添加标签点击统计逻辑
+          
+          // 渲染标签云
+          tagContainer.innerHTML = '';
+          Object.entries(tagCounts).forEach(([tag, count]) => {
+              const tagElement = document.createElement('span');
+              tagElement.className = 'tag';
+              tagElement.textContent = `${tag} (${count})`;
+              tagElement.onclick = () => filterByTag(tag);
+              tagContainer.appendChild(tagElement);
           });
-      });
+      }
+
+      // 按标签筛选
+      function filterByTag(tag) {
+          const filteredPosts = blogPosts.filter(post => post.tags.includes(tag));
+          const container = document.getElementById('posts-container');
+          container.innerHTML = `<h3>标签：${tag}</h3>`;
+          
+          filteredPosts.forEach(post => {
+              const postElement = document.createElement('div');
+              postElement.className = 'blog-post';
+              postElement.onclick = () => showPost(post.id);
+              
+              postElement.innerHTML = `
+                  <div class="post-title">${post.title}</div>
+                  <div class="post-meta">
+                      📅 ${post.date} | 👁️ ${post.views} 次阅读
+                  </div>
+                  <div class="post-excerpt">${post.excerpt}</div>
+                  <div class="post-tags">
+                      ${post.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                  </div>
+              `;
+              
+              container.appendChild(postElement);
+          });
+          
+          // 添加返回按钮
+          const backBtn = document.createElement('button');
+          backBtn.textContent = '显示全部文章';
+          backBtn.className = 'back-btn';
+          backBtn.onclick = renderBlogPosts;
+          container.insertBefore(backBtn, container.firstChild.nextSibling);
+      }
+
+      // 加载访问统计
+      function loadViewStats() {
+          const saved = localStorage.getItem('blogViewStats');
+          if (saved) {
+              viewStats = JSON.parse(saved);
+              
+              // 检查是否是新的一天
+              const today = new Date().toDateString();
+              if (viewStats.lastViewDate !== today) {
+                  viewStats.todayViews = 0;
+                  viewStats.lastViewDate = today;
+              }
+          }
+      }
+
+      // 增加访问统计
+      function incrementViewStats() {
+          viewStats.totalViews++;
+          viewStats.todayViews++;
+          localStorage.setItem('blogViewStats', JSON.stringify(viewStats));
+      }
+
+      // 更新统计信息显示
+      function updateStats() {
+          document.getElementById('total-posts').textContent = blogPosts.length;
+          document.getElementById('total-views').textContent = viewStats.totalViews;
+          document.getElementById('today-views').textContent = viewStats.todayViews;
+          
+          // 计算标签总数
+          const allTags = new Set();
+          blogPosts.forEach(post => {
+              post.tags.forEach(tag => allTags.add(tag));
+          });
+          document.getElementById('total-tags').textContent = allTags.size;
+      }
+
+      // 页面加载时增加今日访问量
+      incrementViewStats();
   </script>
 </body>
 </html>
