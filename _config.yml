@@ -1,11 +1,16 @@
-title: 我的博客
-description: 分享技术、思考与生活
-baseurl: ""
-url: "http://champeil.github.io"
-
+title: "我的博客"
+description: "一个简洁的个人博客"
+url: "https://yourusername.github.io"
+author: "你的名字"
+timezone: Asia/Shanghai
 markdown: kramdown
-highlighter: rouge
-
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
+kramdown:
+  input: GFM
+permalink: /:year/:month/:day/:title/
+paginate: 0
+plugins: []   # 不使用自定义插件，保证 GitHub Pages 兼容
+collections:
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
