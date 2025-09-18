@@ -2,81 +2,218 @@
 layout: default
 title: 博客
 ---
+
 <h1>最新文章</h1>
 
 <div class="search-box">
-  <input type="text" id="search" placeholder="搜索标题或标签..." />
-  <div class="no-result" id="no-result">未找到匹配文章</div>
+<input type="text" id="search" placeholder="搜索标题或标签..." />
+<div class="no-result" id="no-result" style="display: none;">未找到匹配文章</div>
 </div>
 
 <ul class="post-list" id="post-list">
-  {% assign posts_sorted = site.posts %}
-  {% for post in posts_sorted %}
-    <li class="post-item" data-title="{{ post.title | downcase }}" data-tags="{% for t in post.tags %}{{ t | downcase }} {% endfor %}">
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <div class="post-meta">
-        <span>{{ post.date | date: "%Y-%m-%d" }}</span>
-        {% if post.tags %}
-          <span class="tags-inline">
-            {% for tag in post.tags %}
-              <a href="{{ '/tags.html#' | append: tag | relative_url }}">{{ tag }}</a>
-            {% endfor %}
-          </span>
-        {% endif %}
-      </div>
-      {% if post.excerpt %}
-        <p>{{ post.excerpt | strip_html | truncate: 140 }}</p>
+{% for post in site.posts %}
+  <li class="post-item" data-title="{{ post.title | downcase }}" data-tags="{% for tag in post.tags %}{{ tag | downcase }} {% endfor %}">
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    <div class="post-meta">
+      <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+      {% if post.tags.size > 0 %}
+        <span class="tags-inline">
+          {% for tag in post.tags %}
+            <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>
+          {% endfor %}
+        </span>
       {% endif %}
-    </li>
-  {% endfor %}
+    </div>
+    {% if post.excerpt %}
+      <p>{{ post.excerpt | strip_html | truncate: 140 }}</p>
+    {% endif %}
+  </li>
+{% endfor %}
 </ul>
 
 <h2>标签云</h2>
 <div class="tag-cloud">
-  {% assign all_tags = site.tags %}
-  {% for tag in all_tags %}
-    {% assign tag_name = tag[0] %}
-    {% assign posts_in_tag = tag[1] %}
-    {% assign count = posts_in_tag | size %}
-    {% comment %}
-      简单计算 scale：最小 1 最大 2 （可调）；不用复杂逻辑以保持纯 Liquid 兼容
-    {% endcomment %}
-    {% assign scale = 1 %}
-    {% if count > 6 %}{% assign scale = 2 %}
-    {% elsif count > 3 %}{% assign scale = 1.5 %}
-    {% endif %}
-    <a href="{{ '/tags.html#' | append: tag_name | relative_url }}" style="--scale:{{ scale }}">
-      {{ tag_name }} <span class="count">{{ count }}</span>
-    </a>
-  {% endfor %}
+{% assign sorted_tags = site.tags | sort %}
+{% for tag in sorted_tags %}
+  {% assign tag_name = tag[0] %}
+  {% assign tag_posts = tag[1] %}
+  {% assign tag_count = tag_posts | size %}
+  {% assign tag_slug = tag_name | slugify %}
+  
+  {% comment %} 计算标签大小 {% endcomment %}
+  {% assign tag_size = 'small' %}
+  {% if tag_count >= 5 %}
+    {% assign tag_size = 'large' %}
+  {% elsif tag_count >= 3 %}
+    {% assign tag_size = 'medium' %}
+  {% endif %}
+  
+  <a href="{{ '/tags/' | relative_url }}#{{ tag_slug }}" class="tag-{{ tag_size }}">
+    {{ tag_name }} <span class="count">({{ tag_count }})</span>
+  </a>
+{% endfor %}
 </div>
 
+<style>
+.search-box {
+margin: 2rem 0;
+}
+
+#search {
+width: 100%;
+max-width: 400px;
+padding: 0.5rem;
+border: 1px solid #ddd;
+border-radius: 4px;
+font-size: 1rem;
+}
+
+.no-result {
+margin-top: 1rem;
+color: #666;
+font-style: italic;
+}
+
+.post-list {
+list-style: none;
+padding: 0;
+}
+
+.post-item {
+margin-bottom: 2rem;
+padding-bottom: 1rem;
+border-bottom: 1px solid #eee;
+}
+
+.post-item:last-child {
+border-bottom: none;
+}
+
+.post-item h2 {
+margin: 0 0 0.5rem 0;
+font-size: 1.3rem;
+}
+
+.post-item h2 a {
+text-decoration: none;
+color: #333;
+}
+
+.post-item h2 a:hover {
+color: #007bff;
+}
+
+.post-meta {
+color: #666;
+font-size: 0.9rem;
+margin-bottom: 0.5rem;
+}
+
+.tags-inline {
+margin-left: 1rem;
+}
+
+.tags-inline a {
+display: inline-block;
+margin-right: 0.5rem;
+padding: 0.2rem 0.4rem;
+background: #f1f3f4;
+border-radius: 3px;
+text-decoration: none;
+color: #555;
+font-size: 0.8rem;
+}
+
+.tags-inline a:hover {
+background: #e8eaed;
+}
+
+.tag-cloud {
+margin: 1rem 0;
+line-height: 2;
+}
+
+.tag-cloud a {
+display: inline-block;
+margin: 0.25rem 0.5rem 0.25rem 0;
+padding: 0.3rem 0.6rem;
+background: #f8f9fa;
+border-radius: 4px;
+text-decoration: none;
+color: #495057;
+transition: all 0.2s ease;
+}
+
+.tag-cloud a:hover {
+background: #e9ecef;
+transform: translateY(-1px);
+}
+
+.tag-small {
+font-size: 0.85rem;
+}
+
+.tag-medium {
+font-size: 1rem;
+font-weight: 500;
+}
+
+.tag-large {
+font-size: 1.15rem;
+font-weight: 600;
+}
+
+.count {
+color: #6c757d;
+font-size: 0.8em;
+font-weight: normal;
+}
+
+@media (max-width: 768px) {
+.post-meta {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tags-inline {
+  margin-left: 0;
+  margin-top: 0.5rem;
+}
+}
+</style>
+
 <script>
-(function(){
-  const input = document.getElementById('search');
-  const list = document.getElementById('post-list');
-  const items = Array.from(list.querySelectorAll('.post-item'));
-  const noResult = document.getElementById('no-result');
-  function filter(){
-    const q = input.value.trim().toLowerCase();
-    let visible = 0;
-    items.forEach(li=>{
-      if(!q){
-        li.style.display = '';
-        visible++;
-        return;
-      }
-      const title = li.getAttribute('data-title');
-      const tags = li.getAttribute('data-tags');
-      if(title.includes(q) || tags.includes(q)){
-        li.style.display = '';
-        visible++;
-      } else {
-        li.style.display = 'none';
-      }
-    });
-    noResult.style.display = visible ? 'none':'block';
-  }
-  input.addEventListener('input', filter);
-})();
+document.addEventListener('DOMContentLoaded', function() {
+const input = document.getElementById('search');
+const list = document.getElementById('post-list');
+const items = Array.from(list.querySelectorAll('.post-item'));
+const noResult = document.getElementById('no-result');
+
+function filter() {
+  const query = input.value.trim().toLowerCase();
+  let visibleCount = 0;
+  
+  items.forEach(function(item) {
+    if (!query) {
+      item.style.display = '';
+      visibleCount++;
+      return;
+    }
+    
+    const title = item.getAttribute('data-title') || '';
+    const tags = item.getAttribute('data-tags') || '';
+    
+    if (title.includes(query) || tags.includes(query)) {
+      item.style.display = '';
+      visibleCount++;
+    } else {
+      item.style.display = 'none';
+    }
+  });
+  
+  noResult.style.display = visibleCount === 0 ? 'block' : 'none';
+}
+
+input.addEventListener('input', filter);
+});
 </script>
