@@ -14,7 +14,8 @@ permalink: /tags/
   {% assign tag_name = tag[0] %}
   {% assign tag_posts = tag[1] %}
   {% assign tag_count = tag_posts | size %}
-  <a href="#{{ tag_name | slugify }}" class="tag-link">
+  {% assign tag_slug = tag_name | slugify %}
+  <a href="javascript:void(0)" onclick="scrollToTag('{{ tag_slug }}')" class="tag-link">
     {{ tag_name }} 
     <span class="count">({{ tag_count }})</span>
   </a>
@@ -27,8 +28,9 @@ permalink: /tags/
 {% for tag in sorted_tags %}
 {% assign tag_name = tag[0] %}
 {% assign tag_posts = tag[1] %}
+{% assign tag_slug = tag_name | slugify %}
 
-<section id="{{ tag_name | slugify }}">
+<section id="{{ tag_slug }}" class="tag-section">
   <h2>{{ tag_name }}</h2>
   <ul class="post-list">
     {% for post in tag_posts %}
@@ -51,6 +53,32 @@ permalink: /tags/
 <p>暂时没有标签。</p>
 {% endif %}
 
+<script>
+function scrollToTag(tagSlug) {
+const element = document.getElementById(tagSlug);
+if (element) {
+  element.scrollIntoView({ 
+    behavior: 'smooth',
+    block: 'start'
+  });
+  // 更新 URL 但不触发页面跳转
+  if (history.pushState) {
+    history.pushState(null, null, '#' + tagSlug);
+  }
+}
+}
+
+// 处理直接访问带锚点的 URL
+document.addEventListener('DOMContentLoaded', function() {
+if (window.location.hash) {
+  const tagSlug = window.location.hash.substring(1);
+  setTimeout(function() {
+    scrollToTag(tagSlug);
+  }, 100);
+}
+});
+</script>
+
 <style>
 .tag-cloud {
 margin: 1rem 0;
@@ -65,6 +93,8 @@ border-radius: 3px;
 text-decoration: none;
 color: #333;
 font-size: 0.9rem;
+cursor: pointer;
+transition: background-color 0.2s ease;
 }
 
 .tag-link:hover {
@@ -74,6 +104,11 @@ background: #e8eaed;
 .tag-link .count {
 color: #666;
 font-size: 0.8rem;
+}
+
+.tag-section {
+margin-bottom: 2rem;
+scroll-margin-top: 20px; /* 为固定头部留出空间 */
 }
 
 .post-list {
@@ -95,5 +130,13 @@ border-bottom: none;
 color: #666;
 font-size: 0.9rem;
 margin-top: 0.25rem;
+}
+
+/* 高亮当前标签区域 */
+.tag-section:target {
+background-color: #f8f9fa;
+padding: 1rem;
+border-radius: 5px;
+margin: 1rem 0;
 }
 </style>
