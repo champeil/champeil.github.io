@@ -1,17 +1,20 @@
 ---
 layout: default
 title: 标签
+permalink: /tags/
 ---
+
 <h1>标签</h1>
 <p>按标签浏览文章。</p>
 
+{% if site.tags.size > 0 %}
 <div class="tag-cloud">
 {% assign sorted_tags = site.tags | sort %}
 {% for tag in sorted_tags %}
   {% assign tag_name = tag[0] %}
   {% assign tag_posts = tag[1] %}
   {% assign tag_count = tag_posts | size %}
-  <a href="#{{ tag_name | slugify }}">
+  <a href="#{{ tag_name | slugify }}" class="tag-link">
     {{ tag_name }} 
     <span class="count">({{ tag_count }})</span>
   </a>
@@ -25,17 +28,72 @@ title: 标签
 {% assign tag_name = tag[0] %}
 {% assign tag_posts = tag[1] %}
 
-<h2 id="{{ tag_name | slugify }}">{{ tag_name }}</h2>
-<ul class="post-list">
-  {% for post in tag_posts %}
-    <li class="post-item">
-      <h3 style="font-size: 1.05rem;">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h3>
-      <div class="post-meta">
-        <span>{{ post.date | date: "%Y-%m-%d" }}</span>
-      </div>
-    </li>
-  {% endfor %}
-</ul>
+<section id="{{ tag_name | slugify }}">
+  <h2>{{ tag_name }}</h2>
+  <ul class="post-list">
+    {% for post in tag_posts %}
+      <li class="post-item">
+        <h3 style="font-size: 1.05rem;">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h3>
+        <div class="post-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%Y-%m-%d" }}
+          </time>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
 {% endfor %}
+
+{% else %}
+<p>暂时没有标签。</p>
+{% endif %}
+
+<style>
+.tag-cloud {
+margin: 1rem 0;
+}
+
+.tag-link {
+display: inline-block;
+margin: 0.25rem 0.5rem 0.25rem 0;
+padding: 0.25rem 0.5rem;
+background: #f1f3f4;
+border-radius: 3px;
+text-decoration: none;
+color: #333;
+font-size: 0.9rem;
+}
+
+.tag-link:hover {
+background: #e8eaed;
+}
+
+.tag-link .count {
+color: #666;
+font-size: 0.8rem;
+}
+
+.post-list {
+list-style: none;
+padding: 0;
+}
+
+.post-item {
+margin-bottom: 1rem;
+padding-bottom: 0.5rem;
+border-bottom: 1px solid #eee;
+}
+
+.post-item:last-child {
+border-bottom: none;
+}
+
+.post-meta {
+color: #666;
+font-size: 0.9rem;
+margin-top: 0.25rem;
+}
+</style>
