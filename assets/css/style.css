@@ -10,12 +10,14 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg:#5e606c;
-    --fg:#e8eef1;
-    --accent:#e8eef1;
-    --muted:#8892b0;
-    --border:#2a3038;
-    --code-bg:#1d232b;
+    --bg: #2d3142;           /* 更深的灰蓝色背景，减少蓝光 */
+    --fg: #f5f3f0;           /* 温暖的米白色文字 */
+    --accent: #e8dcc6;       /* 温暖的米黄色强调色 */
+    --muted: #9ca3af;        /* 柔和的灰色次要文字 */
+    --border: #374151;       /* 温和的边框色 */
+    --code-bg: #1f2937;      /* 代码背景色 */
+    --card-bg: #374151;      /* 卡片背景 */
+    --hover: #4b5563;        /* 悬停效果 */
   }
   img { opacity:.92; }
 }
