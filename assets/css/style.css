@@ -22,6 +22,10 @@
   --footer-bg: #2c3e50;
   --footer-text: #ecf0f1;
   --footer-border: #34495e;
+  /* MD文件链接专用颜色 - 深蓝色 */
+  --md-link-color: #0d47a1;
+  --md-link-hover: #002171;
+  --md-link-visited: #1565c0;
 }
 
 /* 暗黑模式变量 */
@@ -41,6 +45,10 @@
   --footer-bg: #1a1a1a;
   --footer-text: #e0e0e0;
   --footer-border: #404040;
+  /* MD文件链接专用颜色 - 浅蓝色 */
+  --md-link-color: #81d4fa;
+  --md-link-hover: #b3e5fc;
+  --md-link-visited: #4fc3f7;
 }
 
 body {
