@@ -249,6 +249,64 @@ body {
   margin-bottom: 15px;
 }
 
+/* 所有Markdown内容中的链接样式（包括列表中的链接） */
+.post-content a,
+.page-content a,
+.post-content li a,
+.page-content li a,
+main a {
+  color: var(--md-link-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.post-content a:hover,
+.page-content a:hover,
+.post-content li a:hover,
+.page-content li a:hover,
+main a:hover {
+  color: var(--md-link-hover);
+  border-bottom-color: var(--md-link-hover);
+}
+
+.post-content a:visited,
+.page-content a:visited,
+.post-content li a:visited,
+.page-content li a:visited,
+main a:visited {
+  color: var(--md-link-visited);
+}
+
+/* 列表中的链接特殊处理 */
+.post-content ul li a,
+.post-content ol li a,
+.page-content ul li a,
+.page-content ol li a {
+  font-weight: 500;
+}
+
+/* About页面的链接 */
+.about-content a {
+  color: var(--md-link-color);
+  font-weight: 500;
+}
+
+.about-content a:hover {
+  color: var(--md-link-hover);
+  text-decoration: underline;
+}
+
+/* 排除特定的链接样式（如导航栏、标签等） */
+.site-nav a,
+.post-link,
+.tag,
+.tag-link,
+.post-nav a {
+  color: inherit !important;
+  border-bottom: none !important;
+}
+
 .post-content pre {
   background-color: var(--code-bg);
   padding: 16px;
