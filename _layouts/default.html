@@ -1,15 +1,61 @@
-{% include head.html %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
+</head>
 <body>
-  <header>
-    <nav>
-      <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>博客</a>
-      <a href="{{ '/tags.html' | relative_url }}" {% if page.url contains 'tags.html' %}class="active"{% endif %}>标签</a>
-      <a href="{{ '/about' | relative_url }}" {% if page.url contains 'about' %}class="active"{% endif %}>关于</a>
-      <a href="{{ '/links' | relative_url }}" {% if page.url contains 'links' %}class="active"{% endif %}>相关链接</a>
-    </nav>
+  <header class="site-header">
+    <div class="wrapper">
+      <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title }}</a>
+      <nav class="site-nav">
+        <a class="page-link" href="{{ "/" | relative_url }}">首页</a>
+        <a class="page-link" href="{{ "/about" | relative_url }}">关于</a>
+        <a class="page-link" href="{{ "/tags" | relative_url }}">标签</a>
+        <a class="page-link" href="{{ "/links" | relative_url }}">友情链接</a>
+      </nav>
+    </div>
   </header>
-  <main>
-    {{ content }}
+
+  <main class="page-content">
+    <div class="wrapper">
+      {{ content }}
+    </div>
   </main>
-  {% include footer.html %}
+
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p>{{ site.description }}</p>
+        </div>
+        <div class="footer-col">
+          <h3>联系方式</h3>
+          <ul class="contact-list">
+            <li>📧 Email: <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            <li>📱 GitHub: <a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a></li>
+            {% if site.twitter_username %}
+            <li>🐦 Twitter: <a href="https://twitter.com/{{ site.twitter_username }}">{{ site.twitter_username }}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+        <p>访问量：<span id="busuanzi_value_site_pv"></span> | 访客数：<span id="busuanzi_value_site_uv"></span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</body>
+</html>
