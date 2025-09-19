@@ -1,12 +1,11 @@
 # 站点设置
-title: 我的个人博客
-email: your-email@example.com
+title: 啊哈！
+email: laojp@sysucc.org.cn
 description: >-
-  欢迎来到我的个人博客，这里记录着我的技术心得和生活感悟。
+  哦哦~做到只积咁嘅样~
 baseurl: "" # 如果你的博客不在域名根目录，需要设置这个
-url: "https://yourusername.github.io" # 你的站点URL
-github_username: yourusername
-twitter_username: yourusername
+url: "https://champeil.github.io" # 你的站点URL
+github_username: champeil
 
 # 构建设置
 markdown: kramdown
@@ -33,7 +32,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      author: "你的名字"
+      author: "champeil"
 
 # 排除文件
 exclude:
