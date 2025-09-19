@@ -33,11 +33,18 @@ body {
   align-items: center;
 }
 
+/* 网站标题样式 - 增大字体 */
 .site-title {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 36px;  /* 从24px增加到36px */
+  font-weight: 700;  /* 加粗 */
   color: #2c3e50;
   text-decoration: none;
+  letter-spacing: 1px;  /* 增加字母间距 */
+  transition: color 0.3s;
+}
+
+.site-title:hover {
+  color: #1976d2;  /* 悬停时变色 */
 }
 
 .site-nav a {
