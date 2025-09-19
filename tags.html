@@ -1,142 +1,33 @@
 ---
-layout: default
+layout: page
 title: 标签
-permalink: /tags
+permalink: /tags/
 ---
 
-<h1>标签</h1>
-<p>按标签浏览文章。</p>
-
-{% if site.tags.size > 0 %}
-<div class="tag-cloud">
-{% assign sorted_tags = site.tags | sort %}
-{% for tag in sorted_tags %}
-  {% assign tag_name = tag[0] %}
-  {% assign tag_posts = tag[1] %}
-  {% assign tag_count = tag_posts | size %}
-  {% assign tag_slug = tag_name | slugify %}
-  <a href="javascript:void(0)" onclick="scrollToTag('{{ tag_slug }}')" class="tag-link">
-    {{ tag_name }} 
-    <span class="count">({{ tag_count }})</span>
-  </a>
-{% endfor %}
-</div>
-
-<hr style="margin: 2.2rem 0;">
-
-{% assign sorted_tags = site.tags | sort %}
-{% for tag in sorted_tags %}
-{% assign tag_name = tag[0] %}
-{% assign tag_posts = tag[1] %}
-{% assign tag_slug = tag_name | slugify %}
-
-<section id="{{ tag_slug }}" class="tag-section">
-  <h2>{{ tag_name }}</h2>
-  <ul class="post-list">
-    {% for post in tag_posts %}
-      <li class="post-item">
-        <h3 style="font-size: 1.05rem;">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </h3>
-        <div class="post-meta">
-          <time datetime="{{ post.date | date_to_xmlschema }}">
-            {{ post.date | date: "%Y-%m-%d" }}
-          </time>
-        </div>
-      </li>
+<div class="tags-page">
+  <h1>所有标签</h1>
+  
+  <div class="tag-cloud">
+    {% assign tags = site.tags | sort %}
+    {% for tag in tags %}
+      <a href="#{{ tag[0] | slugify }}" class="tag-link">
+        {{ tag[0] }} <span class="tag-count">({{ tag[1].size }})</span>
+      </a>
     {% endfor %}
-  </ul>
-</section>
-{% endfor %}
+  </div>
 
-{% else %}
-<p>暂时没有标签。</p>
-{% endif %}
-
-<script>
-function scrollToTag(tagSlug) {
-const element = document.getElementById(tagSlug);
-if (element) {
-  element.scrollIntoView({ 
-    behavior: 'smooth',
-    block: 'start'
-  });
-  // 更新 URL 但不触发页面跳转
-  if (history.pushState) {
-    history.pushState(null, null, '#' + tagSlug);
-  }
-}
-}
-
-// 处理直接访问带锚点的 URL
-document.addEventListener('DOMContentLoaded', function() {
-if (window.location.hash) {
-  const tagSlug = window.location.hash.substring(1);
-  setTimeout(function() {
-    scrollToTag(tagSlug);
-  }, 100);
-}
-});
-</script>
-
-<style>
-.tag-cloud {
-margin: 1rem 0;
-}
-
-.tag-link {
-display: inline-block;
-margin: 0.25rem 0.5rem 0.25rem 0;
-padding: 0.25rem 0.5rem;
-background: #f1f3f4;
-border-radius: 3px;
-text-decoration: none;
-color: #333;
-font-size: 0.9rem;
-cursor: pointer;
-transition: background-color 0.2s ease;
-}
-
-.tag-link:hover {
-background: #e8eaed;
-}
-
-.tag-link .count {
-color: #666;
-font-size: 0.8rem;
-}
-
-.tag-section {
-margin-bottom: 2rem;
-scroll-margin-top: 20px; /* 为固定头部留出空间 */
-}
-
-.post-list {
-list-style: none;
-padding: 0;
-}
-
-.post-item {
-margin-bottom: 1rem;
-padding-bottom: 0.5rem;
-border-bottom: 1px solid #eee;
-}
-
-.post-item:last-child {
-border-bottom: none;
-}
-
-.post-meta {
-color: #666;
-font-size: 0.9rem;
-margin-top: 0.25rem;
-}
-
-/* 高亮当前标签区域 */
-.tag-section:target {
-background-color: #f8f9fa;
-padding: 1rem;
-border-radius: 5px;
-margin: 1rem 0;
-}
-</style>
+  <div class="tag-posts">
+    {% assign tags = site.tags | sort %}
+    {% for tag in tags %}
+      <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
+      <ul class="post-list">
+        {% for post in tag[1] %}
+          <li>
+            <span class="post-meta">{{ post.date | date: "%Y年%m月%d日" }}</span>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </div>
+</div>
