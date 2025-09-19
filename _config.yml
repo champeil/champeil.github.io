@@ -1,8 +1,7 @@
 # 站点设置
 title: 哦哦~做到只积咁嘅样~
 email: laojp@sysucc.org.cn
-description: >-
-  啊哈！
+description: 啊哈！
 baseurl: "" # 如果你的博客不在域名根目录，需要设置这个
 url: "https://champeil.github.io" # 你的站点URL
 github_username: champeil
