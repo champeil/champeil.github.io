@@ -21,21 +21,16 @@ google_analytics: UA-XXXXXXXXX-X
 # 文章链接格式
 permalink: /:year/:month/:day/:title/
 
-# 分页
-paginate: 10
-paginate_path: "/page:num/"
-
-# 默认值
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      author: "champeil"
+# 分页（注意：需要添加 jekyll-paginate 插件）
+# paginate: 10
+# paginate_path: "/page:num/"
 
 # 排除文件
 exclude:
   - Gemfile
   - Gemfile.lock
-  - README.md
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
