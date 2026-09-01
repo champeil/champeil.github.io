@@ -1,18 +1,15 @@
 ---
 layout: page
 title: About
-description: 打码改变世界
-keywords: Zhuang Ma, 马壮
+description: 哦哦~做到只积咁样~
+keywords: 
 comments: true
 menu: 关于
 permalink: /about/
 ---
 
-我是马壮，码而生，码而立。
+吗喽，吗到最后应有尽有
 
-仰慕「优雅编码的艺术」。
-
-坚信熟能生巧，努力改变人生。
 
 ## 联系
 
