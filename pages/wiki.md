@@ -1,36 +1,36 @@
 ---
-layout: wiki
-title: Wiki
-description: 人越学越觉得自己无知
-keywords: 维基, Wiki
+layout: paper
+title: Paper
+description: 文献分享
+keywords: 文献, Paper
 comments: false
 copyright: false
-menu: 维基
-permalink: /wiki/
+menu: 文献
+permalink: /paper/
 ---
 
-> 记多少命令和快捷键会让脑袋爆炸呢？
+> 分享好康的文献？
 
 {% case site.components.wiki.view %}
 
 {% when 'list' %}
 
 <ul class="listing">
-{% for wiki in site.wiki %}
-{% if wiki.title != "Wiki Template" and wiki.topmost == true %}
-<li class="listing-item"><a href="{{ site.url }}{{ wiki.url }}"><span class="top-most-flag">[置顶]</span>{{ wiki.title }}</a></li>
+{% for paper in site.paper %}
+{% if paper.title != "Paper Template" and paper.topmost == true %}
+<li class="listing-item"><a href="{{ site.url }}{{ paper.url }}"><span class="top-most-flag">[置顶]</span>{{ paper.title }}</a></li>
 {% endif %}
 {% endfor %}
-{% for wiki in site.wiki %}
-{% if wiki.title != "Wiki Template" and wiki.topmost != true %}
-<li class="listing-item"><a href="{{ site.url }}{{ wiki.url }}">{{ wiki.title }}<span style="font-size:12px;color:red;font-style:italic;">{%if wiki.layout == 'mindmap' %}  mindmap{% endif %}</span></a></li>
+{% for paper in site.paper %}
+{% if paper.title != "Paper Template" and paper.topmost != true %}
+<li class="listing-item"><a href="{{ site.url }}{{ paper.url }}">{{ paper.title }}<span style="font-size:12px;color:red;font-style:italic;">{%if paper.layout == 'mindmap' %}  mindmap{% endif %}</span></a></li>
 {% endif %}
 {% endfor %}
 </ul>
 
 {% when 'cate' %}
 
-{% assign item_grouped = site.wiki | where_exp: 'item', 'item.title != "Wiki Template"' | group_by: 'cate1' | sort: 'name' %}
+{% assign item_grouped = site.paper | where_exp: 'item', 'item.title != "Paper Template"' | group_by: 'cate1' | sort: 'name' %}
 {% for group in item_grouped %}
 ### {{ group.name }}
 {% assign cate_items = group.items | sort: 'title' %}
