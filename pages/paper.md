@@ -11,7 +11,7 @@ permalink: /paper/
 
 > 分享好康的文献
 
-{% case site.components.wiki.view %}
+{% case site.components.paper.view %}
 
 {% when 'list' %}
 
