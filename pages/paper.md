@@ -9,7 +9,7 @@ menu: 文献
 permalink: /paper/
 ---
 
-> 分享好康的文献？
+> 分享好康的文献
 
 {% case site.components.wiki.view %}
 
