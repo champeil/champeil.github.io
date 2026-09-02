@@ -1,5 +1,5 @@
 ---
-layout: wiki
+layout: paper
 title: JSON
 cate1: Android
 cate2:
