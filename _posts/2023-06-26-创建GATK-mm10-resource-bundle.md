@@ -3,16 +3,9 @@ layout:     post
 title:      创建GATK mm10 resource bundle
 date:       2023-06-26
 author:     champeil
-catalog: true
-tags:
-    - wes
-    - wgs
-    - wxs
-    - software
-    - gatk
-    - reference
-    - mm10
-    - somatic
+description: 创建mm10版本的gatk resource
+categories: GATK
+keywords:   wes,wgs,wxs,software,gatk,reference,mm10,somatic
 ---
 
 # 前言
