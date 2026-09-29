@@ -4,7 +4,7 @@ title:      ChIPQC的烦人bug记录
 date:       2024-06-27
 author:     champeil
 description: ChIPQC的烦人bug记录
-categories: chipseq
+categories: R
 keywords:   chipseq,atacseq,chipqc,r,software,bug
 ---
 
