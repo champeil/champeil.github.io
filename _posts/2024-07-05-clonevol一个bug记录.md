@@ -3,15 +3,9 @@ layout:     post
 title:      clonevol一个bug记录
 date:       2024-07-01
 author:     champeil
-catalog: true
-tags:
-    - WES
-    - WGS
-    - MPTevol
-    - clonevol
-    - r
-    - software
-    - bug
+description: clonevol一个bug记录
+categories: WES
+keywords:   WES,WGS,MPTevol,clonevol,r,software,bug
 ---
 
 # introduction

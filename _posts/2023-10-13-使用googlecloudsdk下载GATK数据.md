@@ -3,14 +3,9 @@ layout:     post
 title:      使用googlecloudsdk下载GATK数据
 date:       2023-10-13
 author:     champeil
-catalog: true
-tags:
-    - software
-    - googlecloud
-    - download
-    - gatk
-    - reference
-    - window
+description: 使用googlecloudsdk下载GATK数据
+categories: software
+keywords:   software,googlecloud,download,gatk,reference,window
 ---
 # 前言
 - 在[gatk bundle](https://console.cloud.google.com/storage/browser/gcp-public-data--broad-references/hg38/v0?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=true)中，gatk使用googlecloud进行数据储存，在网页界面上只能单一文件进行下载

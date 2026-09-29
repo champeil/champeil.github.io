@@ -3,13 +3,9 @@ layout:     post
 title:      创建expressionset对象
 date:       2023-01-08
 author:     champeil
-catalog: true
-tags:
-    - expressionset
-    - Biobase
-    - R_package
-    - expression_data
-    - R_object
+description: 创建expressionset对象
+categories: expressionset
+keywords:   expressionset,Biobase,R_package,expression_data,R_object
 ---
 
 # 创建expressionset对象 [来源:Biobase](https://www.bioconductor.org/packages/release/bioc/html/Biobase.html)

@@ -3,12 +3,9 @@ layout:     post
 title:      alleleCount安装使用
 date:       2024-06-19
 author:     champeil
-catalog: true
-tags:
-    - alleleCount
-    - htslib
-    - 软件安装使用
-    - linux
+description: alleleCount安装使用
+categories: alleleCount
+keywords:   alleleCount,htslib,软件安装使用,linux
 ---
 
 # 前言

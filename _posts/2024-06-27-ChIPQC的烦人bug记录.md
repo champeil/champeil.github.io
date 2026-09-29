@@ -3,14 +3,9 @@ layout:     post
 title:      ChIPQC的烦人bug记录
 date:       2024-06-27
 author:     champeil
-catalog: true
-tags:
-    - chipseq
-    - atacseq
-    - chipqc
-    - r
-    - software
-    - bug
+description: ChIPQC的烦人bug记录
+categories: chipseq
+keywords:   chipseq,atacseq,chipqc,r,software,bug
 ---
 
 # introduction
