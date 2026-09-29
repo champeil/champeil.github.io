@@ -4,7 +4,7 @@ title:      使用googlecloudsdk下载GATK数据
 date:       2023-10-13
 author:     champeil
 description: 使用googlecloudsdk下载GATK数据
-categories: software
+categories: GATK
 keywords:   software,googlecloud,download,gatk,reference,window
 ---
 # 前言
