@@ -4,7 +4,7 @@ title:      clonevol一个bug记录
 date:       2024-07-01
 author:     champeil
 description: clonevol一个bug记录
-categories: WES
+categories: R
 keywords:   WES,WGS,MPTevol,clonevol,r,software,bug
 ---
 
