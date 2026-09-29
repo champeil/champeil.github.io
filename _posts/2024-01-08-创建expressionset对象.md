@@ -4,7 +4,7 @@ title:      创建expressionset对象
 date:       2023-01-08
 author:     champeil
 description: 创建expressionset对象
-categories: expressionset
+categories: ExpressionSet对象
 keywords:   expressionset,Biobase,R_package,expression_data,R_object
 ---
 
