@@ -1,0 +1,58 @@
+<h3>Keywords Cloud</h3>
+{% assign all_kw = '' %}
+{% for post in site.posts %}
+{% assign kws = post.keywords | default: '' | replace: '，', ',' | replace: '、', ',' | split: ',' %}
+{% for kw in kws %}
+{% assign k = kw | strip %}
+{% if k != '' %}{% assign all_kw = all_kw | append: k | append: '|' %}{% endif %}
+{% endfor %}
+{% endfor %}
+{% assign kw_list = all_kw | split: '|' | sort | uniq %}
+
+{% assign stats = '' %}
+{% assign max = 0 %}
+{% assign min = 9999 %}
+{% for k in kw_list %}
+{% assign c = 0 %}
+{% assign needle = '|' | append: k | append: '|' %}
+{% for post in site.posts %}
+{% assign norm = post.keywords | default: '' | replace: '，', ',' | replace: '、', ',' | replace: ',', '|' %}
+{% assign norm = '|' | append: norm | append: '|' %}
+{% if norm contains needle %}{% assign c = c | plus: 1 %}{% endif %}
+{% endfor %}
+{% if c > max %}{% assign max = c %}{% endif %}
+{% if c < min %}{% assign min = c %}{% endif %}
+{% assign stats = stats | append: k | append: ':' | append: c | append: '|' %}
+{% endfor %}
+{% assign diff = max | minus: min %}
+
+{% if diff == 0 %}
+  {% assign diff = 1 %}
+{% endif %}
+
+{% assign pairs = stats | split: '|' %}
+{% for pair in pairs %}
+{% if pair != '' %}
+{% assign parts = pair | split: ':' %}
+{% assign k = parts[0] %}
+{% assign c = parts[1] | plus: 0 %}
+{% assign temp = c | minus: min | times: 36 | divided_by: diff %}
+{% assign base = temp | divided_by: 4 %}
+{% assign remain = temp | modulo: 4 %}
+{% if remain == 0 %}
+  {% assign size = base | plus: 9 %}
+{% elsif remain == 1 or remain == 2 %}
+  {% assign size = base | plus: 9 | append: '.5' %}
+{% else %}
+  {% assign size = base | plus: 10 %}
+{% endif %}
+{% if remain == 0 or remain == 1 %}
+  {% assign color = 9 | minus: base %}
+{% else %}
+  {% assign color = 8 | minus: base %}
+{% endif %}
+<a href="{{ site.url }}/keywords/#{{ k }}" style="font-size: {{ size }}pt; color: #{{ color }}{{ color }}{{ color }};">{{ k }}</a>
+{% endif %}
+{% endfor %}
+
+<!-- keyword cloud from post keywords, ref http://liberize.github.io/tech/jekyll-tag-cloud.html -->
