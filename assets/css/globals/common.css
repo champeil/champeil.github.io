@@ -743,3 +743,14 @@ img + em {
 @media (max-width: 400px) { .content-header-ad { display: none; } }
 @media (min-width:500px) { .content-header-ad { width: 468px; height: 60px; } }
 @media (min-width:800px) { .content-header-ad { width: 728px; height: 90px; } }
+
+/* ===== Teal theme overrides (2026-10-03) ===== */
+a{color:#0f766e}
+a:hover{color:#115e59}
+::selection{background:#99f6e4}
+.pagination a.active{background:#0f766e;border-color:#0f766e}
+.repo-list .repo-list-name a{color:#0f766e}
+.posts-list .posts-list-name{color:#0f766e}
+.site-header-nav-item.selected{color:#0f766e !important}
+.btn-primary{background-color:#0f766e;background-image:linear-gradient(#14a098,#0f766e);border-color:#0d5f59}
+.btn-primary:hover{background-color:#115e59;background-image:linear-gradient(#129489,#115e59);border-color:#0d5f59}

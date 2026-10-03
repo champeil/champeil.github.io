@@ -5,8 +5,8 @@ baseurl:
 url: https://champeil.github.io
 date_format: "ordinal"
 title: champeil
-subtitle: 
-description: "哦哦~做到只积咁样~"
+subtitle: 生物信息 · 肿瘤基因组 · 单细胞与空间组学
+description: "肿瘤基因组学与生物信息学研究者的个人小站：技术文章、文献分享、GitHub 项目整理"
 keywords: 
 timezone: Asia/Shanghai
 encoding: "utf-8"
@@ -113,7 +113,7 @@ index:
         # 首页导航栏文字颜色
         nav-color: "rgba(255, 255, 255, .5)"
         # 首页 banner 区背景颜色
-        background-color: "#4183c4"
+        background-color: "#0f766e"
         # 首页 banner 区背景图片
         # background-image: "/assets/images/octicons-bg.png"
         # background-repeat: "no-repeat"

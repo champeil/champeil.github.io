@@ -43,16 +43,16 @@ permalink: /paper/
 
 <style>
 .kw-chip{background:#f1f3f5;border:1px solid #dee2e6;border-radius:999px;padding:2px 10px;margin:2px;font-size:12px;color:#495057;cursor:pointer;line-height:1.8}
-.kw-chip:hover{background:#e7f5ff;border-color:#74c0fc;color:#1971c2}
-.kw-chip.active{background:#1971c2;color:#fff;border-color:#1971c2}
+.kw-chip:hover{background:#f0fdfa;border-color:#5eead4;color:#0f766e}
+.kw-chip.active{background:#0f766e;color:#fff;border-color:#0f766e}
 .kw-chips .kw-chip{font-size:11px;padding:0 8px;color:#868e96;background:transparent;border-color:#e9ecef}
-.kw-chips .kw-chip:hover{color:#1971c2;border-color:#74c0fc;background:#e7f5ff}
+.kw-chips .kw-chip:hover{color:#0f766e;border-color:#5eead4;background:#f0fdfa}
 #kw-cloud{margin:6px 0}
-#kw-bar{background:#fff9db;border:1px solid #ffd43b;border-radius:8px;padding:8px 12px;margin:12px 0;font-size:14px}
+#kw-bar{background:#f0fdfa;border:1px solid #5eead4;border-radius:8px;padding:8px 12px;margin:12px 0;font-size:14px}
 #kw-bar .kw-chip{background:#fff}
 #kw-cloud-wrap.collapsed #kw-cloud,#kw-cloud-wrap.collapsed #kw-more{display:none}
 .kw-toggle{background:none;border:none;font-size:16px;font-weight:bold;cursor:pointer;padding:4px 0;color:inherit}
-.kw-toggle:hover{color:#1971c2}
+.kw-toggle:hover{color:#0f766e}
 #kw-total{font-weight:normal;font-size:12px;color:#888}
 </style>
 
@@ -60,7 +60,7 @@ permalink: /paper/
 {% assign item_grouped = site.paper | where_exp: 'item', 'item.title != "Paper Template"' | group_by: 'cate1' | sort: 'name' %}
 {% for group in item_grouped %}
 <div class="kw-group">
-<h3>{{ group.name }}</h3>
+<h3 id="{{ group.name }}">{{ group.name }}</h3>
 {% assign cate_items = group.items | sort: 'title' %}
 {% assign item2_grouped = cate_items | group_by: 'cate2' | sort: 'name' %}
 {% for sub_group in item2_grouped %}

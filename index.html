@@ -20,8 +20,15 @@ comments: false
 
 .home .banner,
 .home .site-header {
-    background-color: {{ site.index.banner.background-color | default: '#4183c4'}};
+    background-color: {{ site.index.banner.background-color | default: '#0f766e'}};
+    background-image: linear-gradient(135deg, rgba(15,118,110,0) 0%, rgba(19,78,74,.6) 100%);
 }
+
+.hero-tagline{color:rgba(255,255,255,.88);font-size:16px;margin:14px 0 18px;max-width:36em}
+.hero-actions{margin:0 0 14px}
+.hero-btn{display:inline-block;color:#fff;border:1px solid rgba(255,255,255,.65);border-radius:999px;padding:6px 20px;margin:0 10px 10px 0;font-size:14px;text-decoration:none;transition:background .2s}
+.hero-btn:hover{background:rgba(255,255,255,.16);color:#fff;border-color:#fff}
+.hero-stats{color:rgba(255,255,255,.62);font-size:13px;margin:0}
 
 {% if site.index.banner.background-image %}
 .home .banner {
@@ -79,6 +86,14 @@ comments: false
                   <a href="https://github.com/{{ site.github_username }}" target="_blank">{{ site.github_username }}</a>
                 </span>
               </div>
+              <p class="hero-tagline">肿瘤基因组学与生物信息学研究者，关注单细胞、空间组学与医学影像 AI。这里记录技术笔记、分享读过的文献，整理实用的 GitHub 开源项目。</p>
+              <div class="hero-actions">
+                <a class="hero-btn" href="{{ site.url }}/archives/">文章</a>
+                <a class="hero-btn" href="{{ site.url }}/paper/">文献</a>
+                <a class="hero-btn" href="{{ site.url }}/paper/#GitHub项目">GitHub 项目</a>
+                <a class="hero-btn" href="{{ site.url }}/about/">关于我</a>
+              </div>
+              <p class="hero-stats">{{ site.posts | size }} 篇文章 · {% assign _papers = site.paper | where_exp: 'item', 'item.title != "Paper Template"' %}{{ _papers | size }} 条文献与项目</p>
             </div>
           </div>
           <div class="column one-third mobile-hidden">
