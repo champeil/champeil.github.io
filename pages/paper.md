@@ -30,8 +30,8 @@ permalink: /paper/
 
 {% when 'cate' %}
 
-<div id="kw-cloud-wrap">
-<h4>关键词 <span style="font-weight:normal;font-size:12px;color:#888">点击可筛选</span></h4>
+<div id="kw-cloud-wrap" class="collapsed">
+<button id="kw-toggle" class="kw-toggle">关键词 <span id="kw-total"></span> <span id="kw-arrow">▸</span></button>
 <div id="kw-cloud"></div>
 <button id="kw-more" class="kw-chip" style="display:none">展开全部</button>
 </div>
@@ -50,7 +50,10 @@ permalink: /paper/
 #kw-cloud{margin:6px 0}
 #kw-bar{background:#fff9db;border:1px solid #ffd43b;border-radius:8px;padding:8px 12px;margin:12px 0;font-size:14px}
 #kw-bar .kw-chip{background:#fff}
-#kw-cloud-wrap h4{margin-bottom:4px}
+#kw-cloud-wrap.collapsed #kw-cloud,#kw-cloud-wrap.collapsed #kw-more{display:none}
+.kw-toggle{background:none;border:none;font-size:16px;font-weight:bold;cursor:pointer;padding:4px 0;color:inherit}
+.kw-toggle:hover{color:#1971c2}
+#kw-total{font-weight:normal;font-size:12px;color:#888}
 </style>
 
 <div id="paper-groups">
@@ -68,9 +71,11 @@ permalink: /paper/
 {%- endif -%}
 {%- assign item_count = sub_group.items | size -%}
 {%- assign item_index = 0 -%}
+{%- assign show_chips = true -%}
+{%- if group.name == 'GitHub项目' or group.name == '文献分享' -%}{%- assign show_chips = false -%}{%- endif -%}
 {%- for item in sub_group.items -%}
 {%- assign item_index = item_index | plus: 1 -%}
-<span class="paper-item" data-keywords="{{ item.keywords | replace: '，', ',' | replace: '、', ',' | escape }}"><a href="{%- if item.type == 'link' -%}{{ item.link }}{%- else -%}{{ site.url }}{{ item.url }}{%- endif -%}" style="display:inline-block;padding:0.5em" {% if item.type == 'link' %} target="_blank" {% endif %}>{{ item.title }}<span style="font-size:12px;color:red;font-style:italic;">{%if item.layout == 'mindmap' %}  mindmap{% endif %}</span></a>{%- assign kws = item.keywords | replace: '，', ',' | replace: '、', ',' | split: ',' -%}<span class="kw-chips">{%- for kw in kws -%}{%- assign k = kw | strip -%}{%- if k != '' -%}<button class="kw-chip" data-kw="{{ k | escape }}">#{{ k }}</button>{%- endif -%}{%- endfor -%}</span></span>{%- if item_index < item_count -%}<span class="kw-sep"> <b>·</b></span>{%- endif -%}
+<span class="paper-item" data-keywords="{{ item.keywords | replace: '，', ',' | replace: '、', ',' | escape }}"><a href="{%- if item.type == 'link' -%}{{ item.link }}{%- else -%}{{ site.url }}{{ item.url }}{%- endif -%}" style="display:inline-block;padding:0.5em" {% if item.type == 'link' %} target="_blank" {% endif %}>{{ item.title }}<span style="font-size:12px;color:red;font-style:italic;">{%if item.layout == 'mindmap' %}  mindmap{% endif %}</span></a>{% if show_chips %}{%- assign kws = item.keywords | replace: '，', ',' | replace: '、', ',' | split: ',' -%}<span class="kw-chips">{%- for kw in kws -%}{%- assign k = kw | strip -%}{%- if k != '' -%}<button class="kw-chip" data-kw="{{ k | escape }}">#{{ k }}</button>{%- endif -%}{%- endfor -%}</span>{% endif %}</span>{%- if item_index < item_count -%}<span class="kw-sep"> <b>·</b></span>{%- endif -%}
 {%- endfor -%}
 </div>
 {% endfor %}
@@ -166,6 +171,14 @@ permalink: /paper/
     return m ? decodeURIComponent(m[1]) : null;
   }
   window.addEventListener('hashchange', function(){ setFilter(fromHash()); });
+
+  var wrap = document.getElementById('kw-cloud-wrap');
+  var arrow = document.getElementById('kw-arrow');
+  document.getElementById('kw-total').textContent = '(' + sorted.length + ')';
+  document.getElementById('kw-toggle').addEventListener('click', function(){
+    wrap.classList.toggle('collapsed');
+    arrow.textContent = wrap.classList.contains('collapsed') ? '\u25b8' : '\u25be';
+  });
 
   renderCloud();
   var init = fromHash();
