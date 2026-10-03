@@ -8,6 +8,11 @@ permalink: /keywords/
 ---
 
 <section class="container posts-content">
+<style>
+.kw-index{line-height:2}
+.kw-index a{display:inline-block;margin:0 6px;font-size:13px}
+.kw-index a:hover{color:#0f766e}
+</style>
 {% assign all_kw = '' %}
 {% for post in site.posts %}
 {% assign kws = post.keywords | default: '' | replace: '，', ',' | replace: '、', ',' | split: ',' %}
@@ -17,10 +22,18 @@ permalink: /keywords/
 {% endfor %}
 {% endfor %}
 {% assign kw_list = all_kw | split: '|' | sort | uniq %}
+<p class="kw-index">快速定位：{% for k in kw_list %}<a href="#{{ k }}">{{ k }}</a>{% endfor %}</p>
+<hr>
 {% for k in kw_list %}
-<h3 id="{{ k }}">{{ k }}</h3>
-<ol class="posts-list">
 {% assign needle = '|' | append: k | append: '|' %}
+{% assign kc = 0 %}
+{% for post in site.posts %}
+{% assign _norm = post.keywords | default: '' | replace: '，', ',' | replace: '、', ',' | replace: ',', '|' %}
+{% assign _norm = '|' | append: _norm | append: '|' %}
+{% if _norm contains needle %}{% assign kc = kc | plus: 1 %}{% endif %}
+{% endfor %}
+<h3 id="{{ k }}">{{ k }} <sup>{{ kc }}</sup></h3>
+<ol class="posts-list">
 {% for post in site.posts %}
 {% assign norm = post.keywords | default: '' | replace: '，', ',' | replace: '、', ',' | replace: ',', '|' %}
 {% assign norm = '|' | append: norm | append: '|' %}

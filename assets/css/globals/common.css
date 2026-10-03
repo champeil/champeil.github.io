@@ -754,3 +754,6 @@ a:hover{color:#115e59}
 .site-header-nav-item.selected{color:#0f766e !important}
 .btn-primary{background-color:#0f766e;background-image:linear-gradient(#14a098,#0f766e);border-color:#0d5f59}
 .btn-primary:hover{background-color:#115e59;background-image:linear-gradient(#129489,#115e59);border-color:#0d5f59}
+.post-keywords{margin:24px 0 8px;padding-top:16px;border-top:1px solid #e1e4e8}
+.post-kw{display:inline-block;background:#f0fdfa;border:1px solid #99f6e4;color:#0f766e;border-radius:999px;padding:2px 12px;margin:0 6px 6px 0;font-size:13px}
+.post-kw:hover{background:#ccfbf1;color:#115e59;text-decoration:none}

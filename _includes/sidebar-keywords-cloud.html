@@ -31,8 +31,18 @@
 {% endif %}
 
 {% assign pairs = stats | split: '|' %}
+{% assign shown = 24 %}
+{% assign threshold = shown | plus: 1 %}
+{% assign n = 0 %}
+<style>
+#kwc-toggle{background:#f1f3f5;border:1px solid #dee2e6;border-radius:999px;padding:2px 12px;margin-top:8px;font-size:12px;color:#495057;cursor:pointer}
+#kwc-toggle:hover{border-color:#5eead4;color:#0f766e;background:#f0fdfa}
+</style>
+<div id="kwc-cloud">
 {% for pair in pairs %}
 {% if pair != '' %}
+{% assign n = n | plus: 1 %}
+{% if n == threshold %}<span id="kwc-rest" style="display:none">{% endif %}
 {% assign parts = pair | split: ':' %}
 {% assign k = parts[0] %}
 {% assign c = parts[1] | plus: 0 %}
@@ -54,5 +64,22 @@
 <a href="{{ site.url }}/keywords/#{{ k }}" style="font-size: {{ size }}pt; color: #{{ color }}{{ color }}{{ color }};">{{ k }}</a>
 {% endif %}
 {% endfor %}
+{% if n > shown %}</span>{% endif %}
+</div>
+{% if n > shown %}<button id="kwc-toggle">展开全部（还剩 {{ n | minus: shown }} 个）</button>
+<script>
+(function(){
+  var btn = document.getElementById('kwc-toggle');
+  var rest = document.getElementById('kwc-rest');
+  if (!btn || !rest) return;
+  btn.addEventListener('click', function(){
+    var open = rest.style.display === 'none';
+    rest.style.display = open ? '' : 'none';
+    btn.textContent = open ? '收起' : btn.getAttribute('data-label');
+  });
+  btn.setAttribute('data-label', btn.textContent);
+})();
+</script>
+{% endif %}
 
 <!-- keyword cloud from post keywords, ref http://liberize.github.io/tech/jekyll-tag-cloud.html -->

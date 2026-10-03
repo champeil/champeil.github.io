@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Fragments
+title: 片段
 description: fragments 索引页
 keywords: fragments
 comments: false
@@ -26,7 +26,7 @@ permalink: /fragments/
 
 {% assign taglist = tagliststr | split: ',' | sort_natural %}
 
-<a href="{{ site.url }}/fragments/" style="color:#888;display:inline-block;margin:0 8px;">全部</a>{% for tag in taglist %}<a href="{{ site.url }}/fragments/?tag={{ tag }}" style="color:#888;display:inline-block;margin:0 8px;">{{ tag }}</a>{% endfor %}
+<a href="{{ site.url }}/fragments/" style="color:#0f766e;display:inline-block;margin:0 8px;">全部</a>{% for tag in taglist %}<a href="{{ site.url }}/fragments/?tag={{ tag }}" style="color:#0f766e;display:inline-block;margin:0 8px;">{{ tag }}</a>{% endfor %}
 
 <ul class="listing">
 {% for item in site.fragments %}

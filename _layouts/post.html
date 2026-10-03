@@ -50,6 +50,10 @@ layout: default
     {{ content }}
     {% include copyright.html %}
     </article>
+    {% assign _kws = page.keywords | default: '' | replace: '，', ',' | replace: '、', ',' | split: ',' %}
+    <div class="post-keywords">
+    {% for kw in _kws %}{% assign _k = kw | strip %}{% if _k != '' %}<a class="post-kw" href="{{ site.url }}/keywords/#{{ _k }}">#{{ _k }}</a>{% endif %}{% endfor %}
+    </div>
     <div class="share">
       {% include sns-share.html %}
     </div>

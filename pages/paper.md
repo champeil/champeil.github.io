@@ -95,7 +95,7 @@ permalink: /paper/
   var cloud = document.getElementById('kw-cloud');
   var moreBtn = document.getElementById('kw-more');
   var bar = document.getElementById('kw-bar');
-  var LIMIT = 40, expanded = false, active = null;
+  var LIMIT = 30, expanded = false, active = null;
 
   function chipEl(k, extra){
     var b = document.createElement('button');
