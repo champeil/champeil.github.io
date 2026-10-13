@@ -86,8 +86,16 @@ navs:
     label: 片段
 
   -
-    href: /paper/
-    label: 文献
+    href: /posts/
+    label: 帖子
+
+  -
+    href: /papers/
+    label: 文献分享
+
+  -
+    href: /projects/
+    label: 项目分享
 
   -
     href: /links/

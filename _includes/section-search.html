@@ -1,0 +1,83 @@
+<script>
+(function(){
+  var dataEl = document.getElementById('section-data');
+  if(!dataEl) return;
+  var items;
+  try { items = JSON.parse(dataEl.textContent); } catch(e){ return; }
+  var q = document.getElementById('section-q');
+  var list = document.getElementById('section-list');
+  var count = document.getElementById('section-count');
+  var empty = document.getElementById('section-empty');
+
+  function haystack(it){
+    return (it.title + ' ' + (it.keywords || '') + ' ' + (it.desc || '') + ' ' + (it.meta || '')).toLowerCase();
+  }
+  function splitKws(s){
+    return (s || '').split(/[,，、]/).map(function(x){ return x.trim(); }).filter(Boolean).slice(0, 8);
+  }
+  function row(it){
+    var li = document.createElement('li');
+    li.className = 'repo-list-item';
+    var h = document.createElement('h3');
+    h.className = 'repo-list-name';
+    var a = document.createElement('a');
+    a.textContent = it.title;
+    a.href = it.url;
+    if(it.external){ a.target = '_blank'; a.rel = 'noopener'; }
+    h.appendChild(a);
+    if(it.external){
+      var ext = document.createElement('span');
+      ext.className = 'sec-ext';
+      ext.textContent = ' ↗';
+      h.appendChild(ext);
+    }
+    if(it.meta){
+      var badge = document.createElement('span');
+      badge.className = 'sec-badge';
+      badge.textContent = it.meta;
+      h.appendChild(badge);
+    }
+    if(it.date){
+      var d = document.createElement('span');
+      d.className = 'sec-date';
+      d.textContent = it.date;
+      h.appendChild(d);
+    }
+    li.appendChild(h);
+    if(it.desc){
+      var p = document.createElement('p');
+      p.className = 'repo-list-description';
+      p.textContent = it.desc;
+      li.appendChild(p);
+    }
+    var kws = splitKws(it.keywords);
+    if(kws.length){
+      var kwd = document.createElement('div');
+      kwd.className = 'sec-kws';
+      kws.forEach(function(k){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'sec-kw';
+        b.textContent = '#' + k;
+        b.addEventListener('click', function(){ q.value = k; render(); q.focus(); });
+        kwd.appendChild(b);
+      });
+      li.appendChild(kwd);
+    }
+    return li;
+  }
+  function render(){
+    var toks = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    var res = items.filter(function(it){
+      var h = haystack(it);
+      return toks.every(function(t){ return h.indexOf(t) !== -1; });
+    });
+    list.innerHTML = '';
+    res.forEach(function(it){ list.appendChild(row(it)); });
+    empty.hidden = res.length > 0;
+    count.textContent = toks.length ? ('找到 ' + res.length + ' 条') : ('共 ' + items.length + ' 条');
+  }
+  q.addEventListener('input', render);
+  render();
+})();
+</script>

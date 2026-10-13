@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+<style>
+.section-search-wrap{margin:4px 0 18px}
+#section-q{width:100%;padding:11px 15px;font-size:15px;border:1px solid #ddd;border-radius:8px;outline:none;background:#fff}
+#section-q:focus{border-color:#0f766e;box-shadow:0 0 0 3px rgba(15,118,110,.12)}
+.section-count{margin:8px 2px 0;font-size:13px;color:#888}
+#section-list{list-style:none;padding:0;margin:0}
+#section-list .repo-list-item{padding:13px 0;border-bottom:1px solid #eee}
+#section-list .repo-list-name{margin:0 0 2px;font-size:16px;font-weight:600}
+.sec-date{font-size:13px;color:#999;font-weight:normal;margin-left:10px}
+.sec-ext{font-size:12px;color:#999;font-weight:normal}
+#section-list .repo-list-description{margin:4px 0 0;font-size:14px;color:#666}
+.sec-kws{margin-top:7px}
+.sec-kw{display:inline-block;margin:2px 5px 2px 0;padding:1px 10px;font-size:12px;color:#0f766e;background:#f0fdfa;border:1px solid #cdeeed;border-radius:999px;cursor:pointer}
+.sec-kw:hover{background:#0f766e;border-color:#0f766e;color:#fff}
+.sec-badge{display:inline-block;margin-left:10px;padding:1px 8px;font-size:12px;color:#666;background:#f1f3f5;border-radius:4px;font-weight:normal;vertical-align:1px}
+.section-empty{padding:48px 0;text-align:center;color:#999;font-size:15px}
+</style>
+
+<section class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
+<div class="container">
+  <div class="columns">
+    <div class="column two-thirds">
+      <div class="collection-title">
+        <h1 class="collection-header">{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <div class="collection-info">
+          <span class="meta-info">{{ page.subtitle }}</span>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- / .banner -->
+<section class="container content">
+  <div class="columns">
+    <div class="column three-fourths">
+      <div class="section-search-wrap">
+        <input id="section-q" type="text" placeholder="输入关键词检索…" autocomplete="off">
+        <div id="section-count" class="section-count"></div>
+      </div>
+      <ol id="section-list" class="repo-list"></ol>
+      <div id="section-empty" class="section-empty" hidden>没有找到匹配的内容，换个关键词试试</div>
+      {{ content }}
+    </div>
+  </div>
+</section>
+<!-- /section.content -->
+
+{% include section-search.html %}
