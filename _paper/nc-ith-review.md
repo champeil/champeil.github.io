@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NC：瘤内异质性图谱综述，从实验到临床
 cate1: 文献分享
 cate2: Nature Cancer

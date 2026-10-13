@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NG：SelectSim：体细胞突变共现与互斥分析
 cate1: 文献分享
 cate2: Nature Genetics

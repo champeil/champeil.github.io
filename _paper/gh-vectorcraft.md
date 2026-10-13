@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: VectorCraft
 cate1: GitHub项目
 cate2: 设计工具

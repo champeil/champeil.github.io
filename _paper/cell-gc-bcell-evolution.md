@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Cell：生发中心B细胞的进化景观
 cate1: 文献分享
 cate2: Cell

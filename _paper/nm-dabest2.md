@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NM：DABEST2.0：多组比较ANOVA
 cate1: 文献分享
 cate2: Nature Methods

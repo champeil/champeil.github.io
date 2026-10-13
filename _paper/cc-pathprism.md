@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CC：PathPrism：空间标志物检测的计算框架
 cate1: 文献分享
 cate2: Cancer Cell

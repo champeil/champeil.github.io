@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: SA：结肠肝转移多区域免疫微环境分析
 cate1: 文献分享
 cate2: Science Advances

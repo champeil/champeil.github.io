@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: openrung
 cate1: GitHub项目
 cate2: 网络代理

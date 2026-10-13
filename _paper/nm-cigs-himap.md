@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NM：93,644种化学诱导干扰基因表达模式数据
 cate1: 文献分享
 cate2: Nature Methods

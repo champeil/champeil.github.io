@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CR：人类训练性免疫核心特征基因
 cate1: 文献分享
 cate2: Cell Reports

@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CC：基于蛋白基因组学解读癌症体细胞突变
 cate1: 文献分享
 cate2: Cancer Cell

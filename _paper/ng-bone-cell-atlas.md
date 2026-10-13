@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NG：骨疾病细胞与遗传层面分析与验证
 cate1: 文献分享
 cate2: Nature Genetics

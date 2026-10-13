@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: STTT：肿瘤与炎症中免疫细胞迁移
 cate1: 文献分享
 cate2: Signal Transduction and Targeted Therapy

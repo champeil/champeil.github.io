@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Nature：三阴性乳腺癌对化疗反应的生态类型
 cate1: 文献分享
 cate2: Nature

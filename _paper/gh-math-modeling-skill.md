@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Math Modeling Skill
 cate1: GitHub项目
 cate2: AI Skill

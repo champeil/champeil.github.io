@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NG：泛癌转移肿瘤免疫逃逸基因组图谱
 cate1: 文献分享
 cate2: Nature Genetics

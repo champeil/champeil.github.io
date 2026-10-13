@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NG：突变拷贝定量水平更好的预测预后与转移
 cate1: 文献分享
 cate2: Nature Genetics

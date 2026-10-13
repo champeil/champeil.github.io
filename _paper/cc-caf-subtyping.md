@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CC：癌症相关成纤维细胞分子与空间分型
 cate1: 文献分享
 cate2: Cancer Cell

@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: nature：急性髓系白血病表观多组学分型
 cate1: 文献分享
 cate2: Nature

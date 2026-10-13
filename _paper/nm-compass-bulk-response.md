@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NM：bulk转录组预测治疗响应
 cate1: 文献分享
 cate2: Nature Methods

@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: os-taxonomy
 cate1: GitHub项目
 cate2: 数据集

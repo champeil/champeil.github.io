@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CC：骨髓微环境潜在效应T细胞介导化疗反应
 cate1: 文献分享
 cate2: Cancer Cell

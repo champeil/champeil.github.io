@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Nature：空间生态位非侵入性检测肿瘤微环境
 cate1: 文献分享
 cate2: Nature

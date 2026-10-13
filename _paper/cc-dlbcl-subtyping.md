@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CC：弥漫性大B细胞淋巴瘤分子分型与机制
 cate1: 文献分享
 cate2: Cancer Cell

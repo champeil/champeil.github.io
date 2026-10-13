@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CC：抗PD-1疗法抑制EBV感染肝癌的新机制
 cate1: 文献分享
 cate2: Cancer Cell

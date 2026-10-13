@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NC：急性髓多组学分子亚型及与靶点
 cate1: 文献分享
 cate2: Nature Communications

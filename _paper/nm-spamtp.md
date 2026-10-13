@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NM：SpaMTP：空间代谢组和转录组数据的整合
 cate1: 文献分享
 cate2: Nature Methods

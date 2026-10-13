@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NCB：时空动态揭示女性胎儿生殖道分段特征
 cate1: 文献分享
 cate2: Nature Cell Biology

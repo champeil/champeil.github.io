@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CC：结直肠微转移与大转移的空间多组学
 cate1: 文献分享
 cate2: Cancer Cell

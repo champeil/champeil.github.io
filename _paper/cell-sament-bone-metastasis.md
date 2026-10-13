@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Cell：骨转移中免疫排斥的无偏倚生态位
 cate1: 文献分享
 cate2: Cell

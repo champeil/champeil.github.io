@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Nature：肿瘤类器官样本库基因依赖性图谱
 cate1: 文献分享
 cate2: Nature

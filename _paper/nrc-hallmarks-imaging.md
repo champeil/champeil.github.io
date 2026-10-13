@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NRC：肿瘤标志物分子影像学特征
 cate1: 文献分享
 cate2: Nature Reviews Cancer

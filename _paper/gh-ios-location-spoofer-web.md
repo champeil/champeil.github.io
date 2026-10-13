@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: iOS-Location-Spoofer-Web
 cate1: GitHub项目
 cate2: 效率工具

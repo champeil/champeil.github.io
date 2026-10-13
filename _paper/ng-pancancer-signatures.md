@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NG：泛癌染色体变异与突变特征的表征
 cate1: 文献分享
 cate2: Nature Genetics

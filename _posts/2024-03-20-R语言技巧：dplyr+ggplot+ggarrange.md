@@ -5,7 +5,7 @@ date:       2024-03-20
 author:     champeil
 description: R语言技巧：dplyr+ggplot+ggarrange
 categories: R
-keywords:   R,dplyr,ggplot,R语言技巧
+tags:   R,dplyr,ggplot,R语言技巧
 ---
 
 # 前言

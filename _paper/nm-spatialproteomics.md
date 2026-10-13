@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NM：Spatialproteomics：多重免疫荧光工具
 cate1: 文献分享
 cate2: Nature Methods

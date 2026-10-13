@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: science：Biomni——自动化科研流程智能体
 cate1: 文献分享
 cate2: Science

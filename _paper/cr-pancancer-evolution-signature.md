@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CR：泛癌进化特征、克隆与免疫微环境分析
 cate1: 文献分享
 cate2: Cell Reports

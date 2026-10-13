@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NB：SComatic：单细胞检测体细胞突变
 cate1: 文献分享
 cate2: Nature Biotechnology

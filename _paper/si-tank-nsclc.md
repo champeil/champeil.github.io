@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: SI：taNK在肺癌中具有良好的抗肿瘤效应
 cate1: 文献分享
 cate2: Science Immunology

@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Nature：IDH胶质瘤进展中遗传和细胞状态
 cate1: 文献分享
 cate2: Nature

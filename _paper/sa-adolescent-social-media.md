@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: SA：青少年对社交媒体反馈更加敏感
 cate1: 文献分享
 cate2: Science Advances

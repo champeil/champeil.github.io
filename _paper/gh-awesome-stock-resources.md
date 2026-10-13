@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: awesome-stock-resources
 cate1: GitHub项目
 cate2: 效率工具

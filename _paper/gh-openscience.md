@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: openscience
 cate1: GitHub项目
 cate2: AI 应用

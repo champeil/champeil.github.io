@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CC：免疫微环境重塑预测免疫治疗疗效
 cate1: 文献分享
 cate2: Cancer Cell

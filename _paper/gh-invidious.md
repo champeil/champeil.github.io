@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: invidious
 cate1: GitHub项目
 cate2: 效率工具

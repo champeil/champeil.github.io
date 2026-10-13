@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: mzlogin.github.io
 cate1: GitHub项目
 cate2: 建站模板

@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Nature：多癌肿的下一代患者来源生物模型
 cate1: 文献分享
 cate2: Nature

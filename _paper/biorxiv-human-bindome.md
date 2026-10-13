@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: bioRxiv：人类蛋白结合剂图谱
 cate1: 文献分享
 cate2: bioRxiv

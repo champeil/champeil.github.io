@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CC：癌症类型特异的驱动变异模式
 cate1: 文献分享
 cate2: Cancer Cell

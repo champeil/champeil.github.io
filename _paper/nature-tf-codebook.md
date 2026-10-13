@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Nature：人类转录因子结合基序扩展知识库
 cate1: 文献分享
 cate2: Nature

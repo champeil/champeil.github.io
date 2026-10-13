@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Nature：组织与肿瘤蛋白组空间分布
 cate1: 文献分享
 cate2: Nature

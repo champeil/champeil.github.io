@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: SI：T细胞记忆的演化
 cate1: 文献分享
 cate2: Science Immunology

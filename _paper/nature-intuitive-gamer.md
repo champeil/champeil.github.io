@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Nature：倾向快速、浅层的模拟理解新游戏
 cate1: 文献分享
 cate2: Nature

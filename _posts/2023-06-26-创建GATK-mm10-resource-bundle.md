@@ -5,7 +5,7 @@ date:       2023-06-26
 author:     champeil
 description: 创建mm10版本的gatk resource
 categories: GATK
-keywords:   wes,wgs,wxs,software,gatk,reference,mm10,somatic
+tags:   wes,wgs,wxs,software,gatk,reference,mm10,somatic
 ---
 
 # 前言

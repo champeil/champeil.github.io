@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: OmniRoute
 cate1: GitHub项目
 cate2: LLM 网关

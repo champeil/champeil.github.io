@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: JITC：解析肝癌新抗原的肿瘤特异性转录本
 cate1: 文献分享
 cate2: Journal for Immunotherapy of Cancer

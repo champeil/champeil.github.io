@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: bioRxiv：Spatium：空间蛋白质语言基础模型
 cate1: 文献分享
 cate2: bioRxiv

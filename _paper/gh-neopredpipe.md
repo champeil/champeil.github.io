@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NeoPredPipe
 cate1: GitHub项目
 cate2: 生信工具

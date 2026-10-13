@@ -5,7 +5,7 @@ date:       2024-06-19
 author:     champeil
 description: alleleCount安装使用
 categories: alleleCount
-keywords:   alleleCount,htslib,软件安装使用,linux
+tags:   alleleCount,htslib,软件安装使用,linux
 ---
 
 # 前言

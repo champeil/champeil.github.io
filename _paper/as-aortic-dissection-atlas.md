@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: AS：单细胞与空间组学整合的主动脉夹层图谱
 cate1: 文献分享
 cate2: Advanced Science

@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NRI：耗竭的T细胞祖细胞新见解
 cate1: 文献分享
 cate2: Nature Reviews Immunology

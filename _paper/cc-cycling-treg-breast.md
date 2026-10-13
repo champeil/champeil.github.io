@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CC：周期Treg前体在乳腺癌进展的免疫抑制
 cate1: 文献分享
 cate2: Cancer Cell

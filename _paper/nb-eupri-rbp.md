@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NCB：真核RNA结合蛋白基序资源揭示进化调控
 cate1: 文献分享
 cate2: Nature Biotechnology

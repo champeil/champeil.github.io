@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: BP：神经疾病异质性进展的影像学建模
 cate1: 文献分享
 cate2: Biological Psychiatry

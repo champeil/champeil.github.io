@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: cell：RegVelo——结合基因调控的发育轨迹
 cate1: 文献分享
 cate2: Cell

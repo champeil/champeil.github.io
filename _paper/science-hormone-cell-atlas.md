@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Science：内分泌系统激素细胞图谱
 cate1: 文献分享
 cate2: Science

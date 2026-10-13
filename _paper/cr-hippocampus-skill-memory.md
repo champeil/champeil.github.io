@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: CR：技能学习中海马体技能记忆的扩展作用
 cate1: 文献分享
 cate2: Cell Reports

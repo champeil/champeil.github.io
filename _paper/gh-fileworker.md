@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: FileWorker
 cate1: GitHub项目
 cate2: 效率工具

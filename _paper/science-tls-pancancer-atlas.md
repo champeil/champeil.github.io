@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: Science：三级淋巴结构的泛癌空间图谱
 cate1: 文献分享
 cate2: Science

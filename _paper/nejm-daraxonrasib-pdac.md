@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NEJM：Daraxonrasib转移性胰腺癌疗效
 cate1: 文献分享
 cate2: NEJM

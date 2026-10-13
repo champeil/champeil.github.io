@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NM：SecAct推断分泌蛋白信号活性
 cate1: 文献分享
 cate2: Nature Methods

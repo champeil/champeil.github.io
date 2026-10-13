@@ -1,5 +1,5 @@
 ---
-layout: paper
+layout: post
 title: NM：CellTune：空间蛋白质细胞分型交互软件
 cate1: 文献分享
 cate2: Nature Methods
