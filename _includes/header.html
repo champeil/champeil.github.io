@@ -16,9 +16,10 @@
     <link rel="stylesheet" href="{{ assets_base_url }}/assets/css/sections/repo-list.css">
     <link rel="stylesheet" href="{{ assets_base_url }}/assets/css/components/boxed-group.css">
     <link rel="stylesheet" href="{{ assets_base_url }}/assets/css/globals/common.css">
-    <link rel="stylesheet" href="{{ assets_base_url }}/assets/css/globals/theme.css">
     <link rel="stylesheet" href="{{ assets_base_url }}/assets/css/globals/responsive.css">
     <link rel="stylesheet" href="{{ assets_base_url }}/assets/css/posts/index.css">
+    <!-- 深海青主题放最后，确保覆盖前面的组件样式 -->
+    <link rel="stylesheet" href="{{ assets_base_url }}/assets/css/globals/theme.css">
     <link rel="stylesheet" href="{{ assets_base_url }}/assets/vendor/octicons/octicons/octicons.css">
     {% assign highlight_base_url = 'https://mazhuang.org/rouge-themes/dist' %}
     {% if site.cdn.jsdelivr.enabled %}
