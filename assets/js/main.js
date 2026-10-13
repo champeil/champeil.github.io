@@ -7,6 +7,18 @@ function toggleMenu() {
   }
 }
 
+/* 深海青主题明暗切换：localStorage 持久化，默认跟随系统 */
+function toggleTheme() {
+  var el = document.documentElement;
+  var next = (el.getAttribute("data-theme") === "dark") ? "light" : "dark";
+  el.setAttribute("data-theme", next);
+  try { localStorage.setItem("cp-theme", next); } catch (e) {}
+}
+document.addEventListener("DOMContentLoaded", function () {
+  var btn = document.getElementById("theme-toggle");
+  if (btn) { btn.addEventListener("click", toggleTheme); }
+});
+
 jQuery(function() {
   // 回到顶部
   function toTop () {

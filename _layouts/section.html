@@ -4,20 +4,21 @@ layout: default
 
 <style>
 .section-search-wrap{margin:4px 0 18px}
-#section-q{width:100%;padding:11px 15px;font-size:15px;border:1px solid #ddd;border-radius:8px;outline:none;background:#fff}
-#section-q:focus{border-color:#0f766e;box-shadow:0 0 0 3px rgba(15,118,110,.12)}
-.section-count{margin:8px 2px 0;font-size:13px;color:#888}
+#section-q{width:100%;padding:11px 15px;font-size:15px;border:1px solid var(--border);border-radius:8px;outline:none;background:var(--surface);color:var(--text)}
+#section-q:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+#section-q::placeholder{color:var(--faint)}
+.section-count{margin:8px 2px 0;font-size:13px;color:var(--faint)}
 #section-list{list-style:none;padding:0;margin:0}
-#section-list .repo-list-item{padding:13px 0;border-bottom:1px solid #eee}
+#section-list .repo-list-item{padding:13px 0;border-bottom:1px solid var(--border-soft)}
 #section-list .repo-list-name{margin:0 0 2px;font-size:16px;font-weight:600}
-.sec-date{font-size:13px;color:#999;font-weight:normal;margin-left:10px}
-.sec-ext{font-size:12px;color:#999;font-weight:normal}
-#section-list .repo-list-description{margin:4px 0 0;font-size:14px;color:#666}
+.sec-date{font-size:13px;color:var(--faint);font-weight:normal;margin-left:10px}
+.sec-ext{font-size:12px;color:var(--faint);font-weight:normal}
+#section-list .repo-list-description{margin:4px 0 0;font-size:14px;color:var(--muted)}
 .sec-kws{margin-top:7px}
-.sec-kw{display:inline-block;margin:2px 5px 2px 0;padding:1px 10px;font-size:12px;color:#0f766e;background:#f0fdfa;border:1px solid #cdeeed;border-radius:999px;cursor:pointer}
-.sec-kw:hover{background:#0f766e;border-color:#0f766e;color:#fff}
-.sec-badge{display:inline-block;margin-left:10px;padding:1px 8px;font-size:12px;color:#666;background:#f1f3f5;border-radius:4px;font-weight:normal;vertical-align:1px}
-.section-empty{padding:48px 0;text-align:center;color:#999;font-size:15px}
+.sec-kw{display:inline-block;margin:2px 5px 2px 0;padding:1px 10px;font-size:12px;color:var(--accent);background:var(--accent-softer);border:1px solid var(--accent-border);border-radius:999px;cursor:pointer}
+.sec-kw:hover{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.sec-badge{display:inline-block;margin-left:10px;padding:1px 8px;font-size:12px;color:var(--muted);background:var(--bg-soft);border-radius:4px;font-weight:normal;vertical-align:1px}
+.section-empty{padding:48px 0;text-align:center;color:var(--faint);font-size:15px}
 </style>
 
 <section class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
