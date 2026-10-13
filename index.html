@@ -88,9 +88,9 @@ comments: false
               </div>
               <p class="hero-tagline">肿瘤基因组学与生物信息学研究者，关注单细胞、空间组学与医学影像 AI。这里记录技术笔记、分享读过的文献，整理实用的 GitHub 开源项目。</p>
               <div class="hero-actions">
-                <a class="hero-btn" href="{{ site.url }}/archives/">文章</a>
-                <a class="hero-btn" href="{{ site.url }}/paper/">文献</a>
-                <a class="hero-btn" href="{{ site.url }}/paper/#GitHub项目">GitHub 项目</a>
+                <a class="hero-btn" href="{{ site.url }}/posts/">帖子</a>
+                <a class="hero-btn" href="{{ site.url }}/papers/">文献分享</a>
+                <a class="hero-btn" href="{{ site.url }}/projects/">项目分享</a>
                 <a class="hero-btn" href="{{ site.url }}/about/">关于我</a>
               </div>
               <p class="hero-stats">{{ site.posts | size }} 篇文章 · {% assign _papers = site.paper | where_exp: 'item', 'item.title != "Paper Template"' %}{{ _papers | size }} 条文献与项目</p>

@@ -77,15 +77,6 @@ navs:
     label: 分类
 
   -
-    href: /archives/
-    label: 归档
-    mobile-hidden: true
-
-  -
-    href: /fragments/
-    label: 片段
-
-  -
     href: /posts/
     label: 帖子
 
@@ -96,11 +87,6 @@ navs:
   -
     href: /projects/
     label: 项目分享
-
-  -
-    href: /links/
-    label: 链接
-    mobile-hidden: true
 
   -
     href: /about/
@@ -152,9 +138,6 @@ collections:
     paper:
         output: true
         permalink: /paper/:path/
-    fragments:
-        output: true
-        permalink: /fragment/:path/
 
 # ---------------- #
 #      Comments    #
