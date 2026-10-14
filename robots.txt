@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://champeil.github.io/sitemap.xml

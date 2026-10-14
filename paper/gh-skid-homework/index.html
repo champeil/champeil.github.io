@@ -1,0 +1,825 @@
+<!DOCTYPE html> <html lang="zh-CN"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> skid-homework | champeil </title> <meta name="author" content="Jianpei Lao"> <meta name="description" content="开源的、AI 驱动的作业辅助工具：Next.js 构建、完全在浏览器端运行，通过调用大语言模型 API 解答作业题目，需"> <meta name="keywords" content="GitHub项目, AI 应用, skid-homework"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://champeil.github.io/paper/gh-skid-homework/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> champeil </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">首页 </a> </li> <li class="nav-item active"> <a class="nav-link" href="/">首页 <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/posts/">帖子 </a> </li> <li class="nav-item "> <a class="nav-link" href="/papers/">文献分享 </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">项目分享 </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">精选文献 </a> </li> <li class="nav-item "> <a class="nav-link" href="/about/">关于 </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">skid-homework</h1> <p class="post-meta"> Created on October 14, 2026 </p> <p class="post-tags"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </p> </header> <article class="post-content"> <div id="markdown-content"> <p>开源的、AI 驱动的作业辅助工具：Next.js 构建、完全在浏览器端运行，通过调用大语言模型 API 解答作业题目，需自备 Gemini API Key 或 OpenAI 兼容 API。</p> <p><strong>仓库</strong>：<a href="https://github.com/cubewhy/skid-homework" rel="external nofollow noopener" target="_blank">cubewhy/skid-homework</a></p> <p><strong>来源</strong>：<a href="https://www.xiaohongshu.com/explore/6a87b06a0000000005033a18" rel="external nofollow noopener" target="_blank">小红书笔记</a>（2026-08-21）</p> </div> </article> <br> <hr> <br> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <ul class="list-disc pl-7 my-3 space-y-2 marker:text-[var(--global-theme-color)]"> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/" target="_blank" rel="noopener noreferrer">Google Gemini updates: Flash 1.5, Gemma 2 and Project Astra</a> <svg width="1rem" height="1rem" viewbox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="https://medium.com/@al-folio/displaying-external-posts-on-your-al-folio-blog-b60a1d241a0a?source=rss-17feae71c3c4------2" target="_blank" rel="noopener noreferrer">Displaying External Posts on Your al-folio Blog</a> <svg width="1rem" height="1rem" viewbox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2024/clonevol%E4%B8%80%E4%B8%AAbug%E8%AE%B0%E5%BD%95/">clonevol一个bug记录</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2024/ChIPQC%E7%9A%84%E7%83%A6%E4%BA%BAbug%E8%AE%B0%E5%BD%95/">ChIPQC的烦人bug记录</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2024/alleleCount%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/">alleleCount安装使用</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2024/%E5%85%B3%E4%BA%8Emamba%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/">关于mamba使用过程中出现的问题</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2024/%E4%BB%8EgenePred%E6%96%87%E4%BB%B6%E4%B8%AD%E6%8F%90%E5%8F%96%E5%A4%96%E6%98%BE%E5%AD%90%E9%95%BF%E5%BA%A6/">从genePred文件提取exon长度</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2024/R%E8%AF%AD%E8%A8%80%E6%8A%80%E5%B7%A7-dplyr+ggplot+ggarrange/">R语言技巧：dplyr+ggplot+ggarrange</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2024/oncoplot%E7%BB%98%E5%88%B6/">oncoplot绘制</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2024/%E5%88%97%E7%BA%BF%E5%9B%BE%E4%B8%8E%E5%AF%B9%E5%BA%94ROC%E6%9B%B2%E7%BA%BF%E8%B7%9FAUC%E5%88%B6%E4%BD%9C/">列线图与对应ROC曲线跟AUC制作</a> </li> </ul> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Jianpei Lao. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-首页",
+    title: "首页",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-首页",
+          title: "首页",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/";
+          },
+        },{id: "nav-帖子",
+          title: "帖子",
+          description: "站内技术文章，输入关键词检索",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/posts/";
+          },
+        },{id: "nav-文献分享",
+          title: "文献分享",
+          description: "文献解读与分享，输入关键词检索",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/papers/";
+          },
+        },{id: "nav-项目分享",
+          title: "项目分享",
+          description: "GitHub 开源项目整理，输入关键词检索",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-精选文献",
+          title: "精选文献",
+          description: "精选文献分享，由 _bibliography/papers.bib 生成。",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/publications/";
+          },
+        },{id: "nav-关于",
+          title: "关于",
+          description: "关于 champeil",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/about/";
+          },
+        },{id: "post-clonevol一个bug记录",
+        
+          title: "clonevol一个bug记录",
+        
+        description: "clonevol一个bug记录",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/clonevol%E4%B8%80%E4%B8%AAbug%E8%AE%B0%E5%BD%95/";
+          
+        },
+      },{id: "post-chipqc的烦人bug记录",
+        
+          title: "ChIPQC的烦人bug记录",
+        
+        description: "ChIPQC的烦人bug记录",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/ChIPQC%E7%9A%84%E7%83%A6%E4%BA%BAbug%E8%AE%B0%E5%BD%95/";
+          
+        },
+      },{id: "post-allelecount安装使用",
+        
+          title: "alleleCount安装使用",
+        
+        description: "alleleCount安装使用",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/alleleCount%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/";
+          
+        },
+      },{id: "post-关于mamba使用过程中出现的问题",
+        
+          title: "关于mamba使用过程中出现的问题",
+        
+        description: "关于mamba使用过程中出现的问题",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/%E5%85%B3%E4%BA%8Emamba%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/";
+          
+        },
+      },{id: "post-从genepred文件提取exon长度",
+        
+          title: "从genePred文件提取exon长度",
+        
+        description: "从genePred文件提取exon长度",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/%E4%BB%8EgenePred%E6%96%87%E4%BB%B6%E4%B8%AD%E6%8F%90%E5%8F%96%E5%A4%96%E6%98%BE%E5%AD%90%E9%95%BF%E5%BA%A6/";
+          
+        },
+      },{id: "post-google-gemini-updates-flash-1-5-gemma-2-and-project-astra",
+        
+          title: 'Google Gemini updates: Flash 1.5, Gemma 2 and Project Astra <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+        
+        description: "We’re sharing updates across our Gemini family of models and a glimpse of Project Astra, our vision for the future of AI assistants.",
+        section: "Posts",
+        handler: () => {
+          
+            window.open("https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/", "_blank");
+          
+        },
+      },{id: "post-r语言技巧-dplyr-ggplot-ggarrange",
+        
+          title: "R语言技巧：dplyr+ggplot+ggarrange",
+        
+        description: "R语言技巧：dplyr+ggplot+ggarrange",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/R%E8%AF%AD%E8%A8%80%E6%8A%80%E5%B7%A7-dplyr+ggplot+ggarrange/";
+          
+        },
+      },{id: "post-oncoplot绘制",
+        
+          title: "oncoplot绘制",
+        
+        description: "oncoplot绘制",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/oncoplot%E7%BB%98%E5%88%B6/";
+          
+        },
+      },{id: "post-列线图与对应roc曲线跟auc制作",
+        
+          title: "列线图与对应ROC曲线跟AUC制作",
+        
+        description: "列线图与对应ROC曲线跟AUC制作",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/%E5%88%97%E7%BA%BF%E5%9B%BE%E4%B8%8E%E5%AF%B9%E5%BA%94ROC%E6%9B%B2%E7%BA%BF%E8%B7%9FAUC%E5%88%B6%E4%BD%9C/";
+          
+        },
+      },{id: "post-术语理解",
+        
+          title: "术语理解",
+        
+        description: "术语理解：关于SCNV",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/%E5%85%B3%E4%BA%8Ecnv%E7%9A%84%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD%E7%90%86%E8%A7%A3/";
+          
+        },
+      },{id: "post-使用googlecloudsdk下载gatk数据",
+        
+          title: "使用googlecloudsdk下载GATK数据",
+        
+        description: "使用googlecloudsdk下载GATK数据",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/%E4%BD%BF%E7%94%A8googlecloudsdk%E4%B8%8B%E8%BD%BDGATK%E6%95%B0%E6%8D%AE/";
+          
+        },
+      },{id: "post-gistic2-cnv热图制作",
+        
+          title: "gistic2 CNV热图制作",
+        
+        description: "gistic2 CNV热图制作",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/gistic2-CNV%E7%83%AD%E5%9B%BE%E5%88%B6%E4%BD%9C/";
+          
+        },
+      },{id: "post-关于tcga数据中的mmr信息",
+        
+          title: "关于TCGA数据中的MMR信息",
+        
+        description: "关于TCGA数据中的MMR信息：求指正或待查询",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/%E5%85%B3%E4%BA%8ETCGA%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84MMR%E4%BF%A1%E6%81%AF/";
+          
+        },
+      },{id: "post-为其他物种制作gistic2软件的参考文件",
+        
+          title: "为其他物种制作gistic2软件的参考文件",
+        
+        description: "为其他物种制作gistic2软件的参考文件：以mm10为例",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/%E4%B8%BA%E5%85%B6%E4%BB%96%E7%89%A9%E7%A7%8D%E5%88%B6%E4%BD%9Cgistic2%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%8F%82%E8%80%83%E6%96%87%E4%BB%B6/";
+          
+        },
+      },{id: "post-创建gatk-mm10-resource-bundle",
+        
+          title: "创建GATK mm10 resource bundle",
+        
+        description: "创建mm10版本的gatk resource",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/%E5%88%9B%E5%BB%BAGATK-mm10-resource-bundle/";
+          
+        },
+      },{id: "post-创建expressionset对象",
+        
+          title: "创建expressionset对象",
+        
+        description: "创建expressionset对象",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/%E5%88%9B%E5%BB%BAexpressionset%E5%AF%B9%E8%B1%A1/";
+          
+        },
+      },{id: "post-关于修改r包源码与编译使用",
+        
+          title: "关于修改R包源码与编译使用",
+        
+        description: "关于修改R包源码与编译使用",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/%E5%85%B3%E4%BA%8E%E4%BF%AE%E6%94%B9R%E5%8C%85%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91%E4%BD%BF%E7%94%A8/";
+          
+        },
+      },{id: "post-displaying-external-posts-on-your-al-folio-blog",
+        
+          title: 'Displaying External Posts on Your al-folio Blog <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.open("https://medium.com/@al-folio/displaying-external-posts-on-your-al-folio-blog-b60a1d241a0a?source=rss-17feae71c3c4------2", "_blank");
+          
+        },
+      },{id: "paper-as-单细胞与空间组学整合的主动脉夹层图谱",
+          title: 'AS：单细胞与空间组学整合的主动脉夹层图谱',
+          description: "整合单细胞 RNA 测序、空间转录组学及功能实验，系统解析主动脉夹层的细胞生态系统",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/as-aortic-dissection-atlas/";
+            },},{id: "paper-biorxiv-人类蛋白结合剂图谱",
+          title: 'bioRxiv：人类蛋白结合剂图谱',
+          description: "构建&quot;Human Bindome&quot;——首个面向人类蛋白质组规模的计算设计蛋白结合剂图谱",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/biorxiv-human-bindome/";
+            },},{id: "paper-biorxiv-spatium-空间蛋白质语言基础模型",
+          title: 'bioRxiv：Spatium：空间蛋白质语言基础模型',
+          description: "针对空间蛋白质组学的蛋白质语言基础模型，采用基于排名的蛋白质标记化策略解决抗体面板异质性",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/biorxiv-spatium/";
+            },},{id: "paper-bp-神经疾病异质性进展的影像学建模",
+          title: 'BP：神经疾病异质性进展的影像学建模',
+          description: "系统综述神经影像学在神经精神疾病异质性解析和疾病进展建模中的发展方向",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/bp-neuroimaging-modeling/";
+            },},{id: "paper-cc-癌症相关成纤维细胞分子与空间分型",
+          title: 'CC：癌症相关成纤维细胞分子与空间分型',
+          description: "提出 CAF 统一分类框架，整合单细胞与空间组学提出分子表型+空间原型模型",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cc-caf-subtyping/";
+            },},{id: "paper-cc-结直肠微转移与大转移的空间多组学",
+          title: 'CC：结直肠微转移与大转移的空间多组学',
+          description: "利用空间多组学技术系统解析结直肠癌宏转移灶与微转移灶的分子演化和空间生态",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cc-crc-metastasis/";
+            },},{id: "paper-cc-周期treg前体在乳腺癌进展的免疫抑制",
+          title: 'CC：周期Treg前体在乳腺癌进展的免疫抑制',
+          description: "系统解析乳腺导管原位癌向浸润性乳腺癌进展过程中的免疫逃逸机制",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cc-cycling-treg-breast/";
+            },},{id: "paper-cc-弥漫性大b细胞淋巴瘤分子分型与机制",
+          title: 'CC：弥漫性大B细胞淋巴瘤分子分型与机制',
+          description: "整合 478 例 DLBCL 的蛋白组、转录组和基因组数据，建立七种跨越传统细胞起源及遗传亚型的蛋白基因型",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cc-dlbcl-subtyping/";
+            },},{id: "paper-cc-癌症类型特异的驱动变异模式",
+          title: 'CC：癌症类型特异的驱动变异模式',
+          description: "基于超 5 万例肿瘤患者多癌种基因组数据，系统构建泛癌驱动突变图谱",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cc-driver-mutations/";
+            },},{id: "paper-cc-骨髓微环境潜在效应t细胞介导化疗反应",
+          title: 'CC：骨髓微环境潜在效应T细胞介导化疗反应',
+          description: "描绘多发性骨髓瘤和急性髓系白血病骨髓中肿瘤反应性 T 细胞特征，开发 15 基因 TFiT 分类器",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cc-marrow-tcell-chemo/";
+            },},{id: "paper-cc-pathprism-空间标志物检测的计算框架",
+          title: 'CC：PathPrism：空间标志物检测的计算框架',
+          description: "基于可解释人工智能的空间生物标志物发现框架，将结直肠癌全切片图像解析为语义组织图谱",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cc-pathprism/";
+            },},{id: "paper-cc-抗pd-1疗法抑制ebv感染肝癌的新机制",
+          title: 'CC：抗PD-1疗法抑制EBV感染肝癌的新机制',
+          description: "基于 TALENT 临床试验，发现抗 PD-1 通过激活 TLS 中 B 细胞体液免疫抑制肝癌的新机制",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cc-pd1-ebv-hcc/";
+            },},{id: "paper-cc-基于蛋白基因组学解读癌症体细胞突变",
+          title: 'CC：基于蛋白基因组学解读癌症体细胞突变',
+          description: "整合蛋白质结构（AlphaFold）与13.9万例肿瘤测序数据，开发隐马尔可夫模型识别显著突变区域（SMR）",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cc-proteogenomics-smr/";
+            },},{id: "paper-cc-免疫微环境重塑预测免疫治疗疗效",
+          title: 'CC：免疫微环境重塑预测免疫治疗疗效',
+          description: "构建ICI治疗泛癌纵向单细胞图谱，提出TIME动态转变方向比基线状态更能预测疗效，并建立59基因特征",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cc-time-ici-remodeling/";
+            },},{id: "paper-cell-生发中心b细胞的进化景观",
+          title: 'Cell：生发中心B细胞的进化景观',
+          description: "构建单克隆 B 细胞小鼠模型，&quot;平行重演&quot;119 个生发中心的抗体进化过程，推断完整的基因型-表型-适应度景观",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cell-gc-bcell-evolution/";
+            },},{id: "paper-cell-regvelo-结合基因调控的发育轨迹",
+          title: 'cell：RegVelo——结合基因调控的发育轨迹',
+          description: "融合单细胞 RNA 测序动态信息与基因调控网络的深度生成模型，用于解析细胞命运转变机制",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cell-regvelo/";
+            },},{id: "paper-cell-骨转移中免疫排斥的无偏倚生态位",
+          title: 'Cell：骨转移中免疫排斥的无偏倚生态位',
+          description: "基于 Sortase A 的微环境利基标记方法 SAMENT，揭示 ERα⁺ 巨噬细胞介导骨转移免疫排斥",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cell-sament-bone-metastasis/";
+            },},{id: "paper-cr-技能学习中海马体技能记忆的扩展作用",
+          title: 'CR：技能学习中海马体技能记忆的扩展作用',
+          description: "揭示技能学习中在线表现的动态机制，发现&quot;高初始技能片段&quot;反映技能记忆容量的渐进式扩容",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cr-hippocampus-skill-memory/";
+            },},{id: "paper-cr-泛癌进化特征-克隆与免疫微环境分析",
+          title: 'CR：泛癌进化特征、克隆与免疫微环境分析',
+          description: "基于 TCGA、PCAWG 等泛癌数据构建四种进化动力学特征（ES1–ES4），系统解析肿瘤克隆演化过程",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cr-pancancer-evolution-signature/";
+            },},{id: "paper-cr-人类训练性免疫核心特征基因",
+          title: 'CR：人类训练性免疫核心特征基因',
+          description: "系统解析人类训练性免疫的核心转录特征，建立跨刺激、跨队列的统一分子图谱",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/cr-trained-immunity-signature/";
+            },},{id: "paper-ace-vpn",
+          title: 'ace-vpn',
+          description: "每月免费 10T 流量的 VPN，横跨公司内网-海内-海外 3 个网段",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-ace-vpn/";
+            },},{id: "paper-awesome-stock-resources",
+          title: 'awesome-stock-resources',
+          description: "免费图库、视频和插画资源合集",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-awesome-stock-resources/";
+            },},{id: "paper-cf-zt-cn-split",
+          title: 'cf-zt-cn-split',
+          description: "自动同步中国大陆 IP 段到 Cloudflare Zero Trust Split Tunnels",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-cf-zt-cn-split/";
+            },},{id: "paper-deepseek-bot",
+          title: 'DeepSeek-Bot',
+          description: "基于 DeepSeek 的开源多智能体 Bot 框架，支持主 Bot、Bot 间消息与群聊，带长期记忆与用量统计。",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-deepseek-bot/";
+            },},{id: "paper-deeptutor",
+          title: 'DeepTutor',
+          description: "终身个性化 AI 导师（Lifelong Personalized Tutoring）",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-deeptutor/";
+            },},{id: "paper-ecopastehub",
+          title: 'EcoPasteHub',
+          description: "适用于 Win/macOS/Linux 的开源跨平台剪贴板管理工具。",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-ecopastehub/";
+            },},{id: "paper-edgetunnel",
+          title: 'edgetunnel',
+          description: "VLESS/Trojan/SS 多功能面板",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-edgetunnel/";
+            },},{id: "paper-fcksignups",
+          title: 'FckSignups',
+          description: "开源、浏览器内运行、免注册的工具合集",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-fcksignups/";
+            },},{id: "paper-fileworker",
+          title: 'FileWorker',
+          description: "运行在边缘函数上的在线剪贴板/文件共享",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-fileworker/";
+            },},{id: "paper-free-claude-code",
+          title: 'free-claude-code',
+          description: "免费使用 Claude Code、Codex、Pi、OpenCode 等",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-free-claude-code/";
+            },},{id: "paper-free-nodes",
+          title: 'free-nodes',
+          description: "每小时自动更新的免费节点订阅，支持 Clash/Mihomo/V2Ray/Trojan/Shadowrocket",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-free-nodes/";
+            },},{id: "paper-free-vpn-anti-rkn",
+          title: 'free-vpn-anti-rkn',
+          description: "免费 VPN 配置合集",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-free-vpn-anti-rkn/";
+            },},{id: "paper-freellmapi",
+          title: 'freellmapi',
+          description: "每月 74 亿 token：34 个免费 LLM 提供商、635 个免费模型端点",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-freellmapi/";
+            },},{id: "paper-freetube",
+          title: 'freetube',
+          description: "原生 SwiftUI 的 iOS YouTube 客户端",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-freetube/";
+            },},{id: "paper-gget",
+          title: 'gget',
+          description: "Pachter Lab 开发、现隶属 scverse 的免费开源命令行工具和 Python 包：以单行代码高效查询各类公",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-gget/";
+            },},{id: "paper-ggseg",
+          title: 'ggseg',
+          description: "基于 ggplot2 的 R 包：将脑区级别的神经影像分析结果（如皮层厚度、p 值、网络分类）可视化为可发表质量的脑图。",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-ggseg/";
+            },},{id: "paper-invidious",
+          title: 'invidious',
+          description: "YouTube 替代前端",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-invidious/";
+            },},{id: "paper-ios-location-spoofer-web",
+          title: 'iOS-Location-Spoofer-Web',
+          description: "iOS GPS 定位修改网页面板",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-ios-location-spoofer-web/";
+            },},{id: "paper-kaobuddy-pwa",
+          title: 'kaobuddy-pwa',
+          description: "面向临考复习的 AI 学习助手 PWA：把课件、教材、笔记、PDF、手写照片和视频字幕转成知识点、学习计划、题目、错题本",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-kaobuddy-pwa/";
+            },},{id: "paper-kkfileview",
+          title: 'kkFileView',
+          description: "基于 Spring-Boot 的通用文件在线预览",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-kkfileview/";
+            },},{id: "paper-math-modeling-skill",
+          title: 'Math Modeling Skill',
+          description: "面向数学建模竞赛（国赛/美赛）的 AI Skill：“建模分析—代码实现—论文撰写”三阶段工作流，建模手、编程手、论文手",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-math-modeling-skill/";
+            },},{id: "paper-moneyprinterturbo",
+          title: 'MoneyPrinterTurbo',
+          description: "利用 AI 大模型一键生成高清短视频",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-moneyprinterturbo/";
+            },},{id: "paper-multipost-extension",
+          title: 'MultiPost-Extension',
+          description: "一键发布内容到多个社媒平台的浏览器扩展",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-multipost-extension/";
+            },},{id: "paper-mzlogin-github-io",
+          title: 'mzlogin.github.io',
+          description: "Jekyll / GitHub Pages 博客模板",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-mzlogin-site/";
+            },},{id: "paper-nango",
+          title: 'nango',
+          description: "AI 驱动的产品集成平台：统一 API 对接各类服务",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-nango/";
+            },},{id: "paper-nanomuse",
+          title: 'nanoMuse',
+          description: "开源、可自托管、跨设备的个人 AI Agent，定位为 Meta Muse 的开源替代方案",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-nanomuse/";
+            },},{id: "paper-neopredpipe",
+          title: 'NeoPredPipe',
+          description: "多区域/单区域 VCF 的新抗原预测流程",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-neopredpipe/";
+            },},{id: "paper-omniroute",
+          title: 'OmniRoute',
+          description: "免费 MIT AI 网关：一个端点聚合 352 个提供商",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-omniroute/";
+            },},{id: "paper-open-xiaoai",
+          title: 'Open-XiaoAI',
+          description: "让小爱音箱「听见你的声音」，解锁无限可能：把小爱音箱接到外部 AI 服务。",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-open-xiaoai/";
+            },},{id: "paper-openrung",
+          title: 'openrung',
+          description: "开放网络接入工具",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-openrung/";
+            },},{id: "paper-openscience",
+          title: 'openscience',
+          description: "开源 AI 科研工作台",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-openscience/";
+            },},{id: "paper-os-taxonomy",
+          title: 'os-taxonomy',
+          description: "Marble 开源的儿童基础教育知识图谱（Marble Skill Taxonomy）：结构化教育数据集，描述小学阶段儿",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-os-taxonomy/";
+            },},{id: "paper-public-apis",
+          title: 'public-apis',
+          description: "免费 API 合集",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-public-apis/";
+            },},{id: "paper-skid-homework",
+          title: 'skid-homework',
+          description: "开源的、AI 驱动的作业辅助工具：Next.js 构建、完全在浏览器端运行，通过调用大语言模型 API 解答作业题目，需",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-skid-homework/";
+            },},{id: "paper-supervisor-skills",
+          title: 'Supervisor-Skills',
+          description: "港科大团队开源的科研辅助项目：把资深博导的科研经验、论文写作方法和审稿判断，转化为可被 GPT、Claude 等大模型执",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-supervisor-skills/";
+            },},{id: "paper-tailcat",
+          title: 'tailcat',
+          description: "基于 Tailscale 数据平面的 netcat",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-tailcat/";
+            },},{id: "paper-usque-custom-pro",
+          title: 'usque-custom-pro',
+          description: "基于 Cloudflare WARP/MASQUE 的可视化注册、配置生成与多客户端转换工具",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-usque-custom-pro/";
+            },},{id: "paper-vectorcraft",
+          title: 'VectorCraft',
+          description: "用纯 Rust 从零构建的开源矢量绘图软件，Adobe Illustrator 的洁净室平替，原生支持 AI Agent 驱动绘图。",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-vectorcraft/";
+            },},{id: "paper-vimax",
+          title: 'ViMax',
+          description: "港大数据智能实验室开源的 Agentic Video Generation：多智能体协作完成编剧、分镜、角色设计与视频生",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-vimax/";
+            },},{id: "paper-webrtc-turn",
+          title: 'webrtc_turn',
+          description: "自托管 WebRTC TURN 中继，一键部署 Cloudflare Worker",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/gh-webrtc_turn/";
+            },},{id: "paper-jitc-解析肝癌新抗原的肿瘤特异性转录本",
+          title: 'JITC：解析肝癌新抗原的肿瘤特异性转录本',
+          description: "系统解析肝细胞癌中来源于肿瘤特异性转录本的新抗原（neoTSTs），建立综合分析体系",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/jitc-liver-neoantigen/";
+            },},{id: "paper-nature-急性髓系白血病表观多组学分型",
+          title: 'nature：急性髓系白血病表观多组学分型',
+          description: "基于 1563 例 AML 患者的 ATAC-seq 及多组学数据，依据染色质可及性划分 16 个亚群",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nature-aml-epigenomic/";
+            },},{id: "paper-nature-多癌肿的下一代患者来源生物模型",
+          title: 'Nature：多癌肿的下一代患者来源生物模型',
+          description: "人类癌症模型倡议（HCMI）建立涵盖 25 种癌症类型的 665 个患者衍生模型，多组学验证保真度",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nature-hcmi-models/";
+            },},{id: "paper-nature-idh胶质瘤进展中遗传和细胞状态",
+          title: 'Nature：IDH胶质瘤进展中遗传和细胞状态',
+          description: "对 35 例 IDH 突变型胶质瘤患者的 75 份纵向样本开展多组学整合分析，系统解析肿瘤复发过程中的细胞状态演化机制",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nature-idh-glioma/";
+            },},{id: "paper-nature-倾向快速-浅层的模拟理解新游戏",
+          title: 'Nature：倾向快速、浅层的模拟理解新游戏',
+          description: "基于 121 种陌生双人棋类游戏和 1000 余名参与者，提出&quot;Intuitive Gamer&quot;计算认知模型",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nature-intuitive-gamer/";
+            },},{id: "paper-nature-肿瘤类器官样本库基因依赖性图谱",
+          title: 'Nature：肿瘤类器官样本库基因依赖性图谱',
+          description: "建立包含 256 个肿瘤类器官的大型生物库，通过 CRISPR-Cas9 筛选绘制基因依赖图谱",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nature-organoid-dependency-map/";
+            },},{id: "paper-nature-空间生态位非侵入性检测肿瘤微环境",
+          title: 'Nature：空间生态位非侵入性检测肿瘤微环境',
+          description: "多模态空间生态型（Spatial Ecotypes）框架，整合千万级单细胞与空间转录组数据，实现血浆 cfDNA 非侵入性检测",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nature-spatial-ecotypes/";
+            },},{id: "paper-nature-组织与肿瘤蛋白组空间分布",
+          title: 'Nature：组织与肿瘤蛋白组空间分布',
+          description: "构建迄今规模最大的空间解析人体蛋白质组图谱，系统分析 58 种组织中的 13,000 余种蛋白表达特征",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nature-spatial-proteome-atlas/";
+            },},{id: "paper-nature-人类转录因子结合基序扩展知识库",
+          title: 'Nature：人类转录因子结合基序扩展知识库',
+          description: "系统性分析 332 个缺乏已知 DNA 结合基序的人类转录因子，为其中 177 个鉴定结合基序",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nature-tf-codebook/";
+            },},{id: "paper-nature-三阴性乳腺癌对化疗反应的生态类型",
+          title: 'Nature：三阴性乳腺癌对化疗反应的生态类型',
+          description: "基于 101 例三阴性乳腺癌术前样本，结合单细胞与空间转录组定义肿瘤生态类型并预测化疗反应",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nature-tnbc-ecotypes/";
+            },},{id: "paper-ncb-真核rna结合蛋白基序资源揭示进化调控",
+          title: 'NCB：真核RNA结合蛋白基序资源揭示进化调控',
+          description: "构建 EuPRI 数据库，为 690 种真核生物的 34,746 个 RNA 结合蛋白预测 RNA 基序",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nb-eupri-rbp/";
+            },},{id: "paper-nb-scomatic-单细胞检测体细胞突变",
+          title: 'NB：SComatic：单细胞检测体细胞突变',
+          description: "无需匹配 DNA 测序数据，直接从单细胞转录组和染色质开放性数据中检测体细胞突变的新算法",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nb-scomatic/";
+            },},{id: "paper-nc-急性髓多组学分子亚型及与靶点",
+          title: 'NC：急性髓多组学分子亚型及与靶点',
+          description: "对 173 例未治疗 AML 样本进行 13 种组学整合分析，构建多组学图谱并识别 AML-8 分型",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nc-aml-multiomics/";
+            },},{id: "paper-nc-瘤内异质性图谱综述-从实验到临床",
+          title: 'NC：瘤内异质性图谱综述，从实验到临床',
+          description: "系统梳理肿瘤内异质性（ITH）从基础机制到临床转化的全景综述",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nc-ith-review/";
+            },},{id: "paper-ncb-时空动态揭示女性胎儿生殖道分段特征",
+          title: 'NCB：时空动态揭示女性胎儿生殖道分段特征',
+          description: "单核转录组与空间转录组构建人类胎儿女性生殖道 GW10–25 时空发育图谱",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/ncb-fetal-frt-atlas/";
+            },},{id: "paper-nejm-daraxonrasib转移性胰腺癌疗效",
+          title: 'NEJM：Daraxonrasib转移性胰腺癌疗效',
+          description: "3 期 RASolute 302 研究，口服 RAS(ON) 多选择性抑制剂 daraxonrasib 对比化疗治疗经治转移性胰腺导管腺癌",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nejm-daraxonrasib-pdac/";
+            },},{id: "paper-ng-骨疾病细胞与遗传层面分析与验证",
+          title: 'NG：骨疾病细胞与遗传层面分析与验证',
+          description: "构建小鼠骨内膜区 13.4 万细胞单细胞图谱，整合骨病基因、GWAS 及敲除鼠表型锁定关键细胞与效应基因",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/ng-bone-cell-atlas/";
+            },},{id: "paper-ng-泛癌转移肿瘤免疫逃逸基因组图谱",
+          title: 'NG：泛癌转移肿瘤免疫逃逸基因组图谱',
+          description: "对6,319例原发与转移性肿瘤做统一WGS泛癌分析，开发LILAC整合框架解析HLA-I复杂位点，系统评估六条免疫逃逸通路",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/ng-gie-landscape/";
+            },},{id: "paper-ng-突变拷贝定量水平更好的预测预后与转移",
+          title: 'NG：突变拷贝定量水平更好的预测预后与转移',
+          description: "开发贝叶斯工具 INCOMMON，量化&quot;基因突变剂量&quot;（GMD），揭示突变拷贝数与倍性对肿瘤演进的协同影响",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/ng-incommon-gmd/";
+            },},{id: "paper-ng-泛癌染色体变异与突变特征的表征",
+          title: 'NG：泛癌染色体变异与突变特征的表征',
+          description: "基于 100,000 Genomes Project 的 10,983 例全基因组测序样本，系统解析 16 种癌症类型中的基因组变异模式",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/ng-pancancer-signatures/";
+            },},{id: "paper-ng-selectsim-体细胞突变共现与互斥分析",
+          title: 'NG：SelectSim：体细胞突变共现与互斥分析',
+          description: "开发 SelectSim 算法，在超过 7 万例肿瘤中系统鉴定功能性的基因共突变（共发生或互斥）",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/ng-selectsim-comutation/";
+            },},{id: "paper-nm-celltune-空间蛋白质细胞分型交互软件",
+          title: 'NM：CellTune：空间蛋白质细胞分型交互软件',
+          description: "面向空间蛋白组学的大规模细胞分类软件平台，通过人机协同主动学习实现高精度细胞识别",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nm-celltune/";
+            },},{id: "paper-nm-93-644种化学诱导干扰基因表达模式数据",
+          title: 'NM：93,644种化学诱导干扰基因表达模式数据',
+          description: "高通量基因表达检测技术 HiMAP-seq 及化学诱导基因特征数据库 CIGS",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nm-cigs-himap/";
+            },},{id: "paper-nm-bulk转录组预测治疗响应",
+          title: 'NM：bulk转录组预测治疗响应',
+          description: "COMPASS——基于概念瓶颈 Transformer 的泛癌种基础模型，利用肿瘤 bulk RNA-seq 预测免疫检查点抑制剂治疗响应",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nm-compass-bulk-response/";
+            },},{id: "paper-nm-dabest2-0-多组比较anova",
+          title: 'NM：DABEST2.0：多组比较ANOVA',
+          description: "介绍 DABEST 2.0 软件，革新多组比较的传统 ANOVA 分析方法，推广估计统计学",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nm-dabest2/";
+            },},{id: "paper-nm-secact推断分泌蛋白信号活性",
+          title: 'NM：SecAct推断分泌蛋白信号活性',
+          description: "从空间转录组、单细胞 RNA 测序及 bulk 转录组数据中系统推断分泌蛋白信号活性的计算框架",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nm-secact/";
+            },},{id: "paper-nm-spamtp-空间代谢组和转录组数据的整合",
+          title: 'NM：SpaMTP：空间代谢组和转录组数据的整合',
+          description: "介绍基于 Seurat 架构的开源 R 包 SpaMTP，整合空间代谢组学与空间转录组数据",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nm-spamtp/";
+            },},{id: "paper-nm-spatialproteomics-多重免疫荧光工具",
+          title: 'NM：Spatialproteomics：多重免疫荧光工具',
+          description: "介绍 Python 软件包 spatialproteomics，用于处理高多重荧光免疫成像数据的端到端工作流",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nm-spatialproteomics/";
+            },},{id: "paper-nrc-肿瘤标志物分子影像学特征",
+          title: 'NRC：肿瘤标志物分子影像学特征',
+          description: "综述癌症标志（Hallmarks of Cancer）的分子影像学研究进展",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nrc-hallmarks-imaging/";
+            },},{id: "paper-nri-耗竭的t细胞祖细胞新见解",
+          title: 'NRI：耗竭的T细胞祖细胞新见解',
+          description: "以专家共识形式系统总结前体耗竭 T 细胞（TPEX）的最新研究进展",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/nri-tpex-progenitors/";
+            },},{id: "paper-sa-青少年对社交媒体反馈更加敏感",
+          title: 'SA：青少年对社交媒体反馈更加敏感',
+          description: "三个互补研究系统揭示青少年对社交媒体反馈（尤其是&quot;点赞&quot;）具有更高敏感性",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/sa-adolescent-social-media/";
+            },},{id: "paper-sa-结肠肝转移多区域免疫微环境分析",
+          title: 'SA：结肠肝转移多区域免疫微环境分析',
+          description: "结直肠癌肝转移多区域取样，单细胞测序揭示 THBS1⁺ 单核细胞向 SPP1⁺ 巨噬细胞分化促进免疫抑制",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/sa-crlm-immune-microenv/";
+            },},{id: "paper-science-biomni-自动化科研流程智能体",
+          title: 'science：Biomni——自动化科研流程智能体',
+          description: "面向生物医学研究的通用人工智能智能体，自动化复杂科研流程提升发现效率",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/science-biomni/";
+            },},{id: "paper-science-内分泌系统激素细胞图谱",
+          title: 'Science：内分泌系统激素细胞图谱',
+          description: "首个激素细胞图谱（Hormone Cell Atlas），整合 47 种人体组织约 1400 万个单细胞转录组数据",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/science-hormone-cell-atlas/";
+            },},{id: "paper-science-三级淋巴结构的泛癌空间图谱",
+          title: 'Science：三级淋巴结构的泛癌空间图谱',
+          description: "12 种癌症 340 张空间转录组切片，系统解析三级淋巴结构（TLS）成熟状态、空间分布及临床意义",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/science-tls-pancancer-atlas/";
+            },},{id: "paper-si-tank在肺癌中具有良好的抗肿瘤效应",
+          title: 'SI：taNK在肺癌中具有良好的抗肿瘤效应',
+          description: "系统解析非小细胞肺癌肿瘤微环境中 NK 细胞的转录与表观遗传图谱",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/si-tank-nsclc/";
+            },},{id: "paper-si-t细胞记忆的演化",
+          title: 'SI：T细胞记忆的演化',
+          description: "系统梳理 CD8⁺ T 细胞记忆研究的发展历程，提出 T 细胞记忆是动态连续体",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/si-tcell-memory-evolution/";
+            },},{id: "paper-sttt-肿瘤与炎症中免疫细胞迁移",
+          title: 'STTT：肿瘤与炎症中免疫细胞迁移',
+          description: "系统综述肿瘤和炎症性疾病中免疫细胞迁移的起源、调控网络、检测技术及治疗策略",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/sttt-immune-cell-migration/";
+            },},{
+        id: 'social-cv',
+        title: 'CV',
+        section: 'Socials',
+        handler: () => {
+          window.open("/assets/pdf/example_pdf.pdf", "_blank");
+        },
+      },{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%79%6F%75@%65%78%61%6D%70%6C%65.%63%6F%6D", "_blank");
+        },
+      },{
+        id: 'social-inspire',
+        title: 'Inspire HEP',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://inspirehep.net/authors/1010907", "_blank");
+        },
+      },{
+        id: 'social-rss',
+        title: 'RSS Feed',
+        section: 'Socials',
+        handler: () => {
+          window.open("/feed.xml", "_blank");
+        },
+      },{
+        id: 'social-scholar',
+        title: 'Google Scholar',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://scholar.google.com/citations?user=qc6CJjYAAAAJ", "_blank");
+        },
+      },{
+        id: 'social-custom_social',
+        title: 'Custom_social',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.alberteinstein.com/", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
