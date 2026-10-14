@@ -14,9 +14,6 @@ latest_posts:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 5 # leave blank to include all the blog posts
-
-nav: true
-nav_order: 1
 ---
 
 我是 champeil，一名肿瘤基因组学与生物信息学研究者。
