@@ -1,0 +1,12 @@
+---
+layout: paper
+title: github项目分享：逆逆又向向
+cate1: GitHub项目
+cate2: 效率工具
+description: Craft Anything：开源软件研究与重建工具，四步流水线 Study→Build→Check→Ready，净室模式、检查驱动生成、证据驱动，320 个工具 Agent-ready，纯 Rust
+keywords: GitHub项目, 效率工具, github开源项目分享, 逆向工程
+---
+
+**github项目分享：逆逆又向向**：Craft Anything 是一个开源的软件研究与重建工具：看懂任意网站、应用或游戏的工作原理，再让 AI 编码代理为你构建一个自己的版本。它把逆向工程从依赖经验的手艺活，变成一套可复现的标准化流水线。四步流水线：Study 研究（用真实检查工具以访客视角观察目标）→ Build 构建（自然语言描述需求，编码代理从零建新项目）→ Check 检查（逐项比对原目标，差异显式列出）→ Ready 就绪（打开试玩，不满意继续迭代收敛）。亮点：净室模式（默认不读原件内部代码、文件或页面源码）；检查驱动生成（生成→比对→修正闭环）；证据驱动（每个结论附证据、置信度与局限）；简单/高级双模式共用同一引擎；320 个工具同时是 CLI 子命令和 MCP 工具；纯 Rust 引擎，支持 macOS、Windows、Linux、FreeBSD 与 Web（WASM），MIT/Apache-2.0 双协议，early alpha。仓库地址：https://github.com/storytold/craft-anything
+
+> 首发于小红书（2026-11-05）· [查看原文](https://www.xiaohongshu.com/explore/6aebf5e2000000001a017336)
