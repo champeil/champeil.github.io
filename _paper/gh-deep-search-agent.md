@@ -11,6 +11,6 @@ keywords: GitHub项目, AI Skill, github开源项目分享, deepsearch, 深度�
 
 ![Deep Research Agent](/images/paper/gh-deep-search-agent.webp)
 
-> 首发于小红书（2026-11-11）· [查看原文](https://www.xiaohongshu.com/explore/6af3e396000000002903f5b5)
+> 首发于小红书（2026-11-11）· [查看原文](https://www.xiaohongshu.com/explore/6af403ce000000002500ad93)
 
 <!-- 封面已更新为新版 README 横幅（2026-11-11） -->
