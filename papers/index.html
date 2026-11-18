@@ -59,6 +59,8 @@
 
 {"title":"CR：泛癌进化特征、克隆与免疫微环境分析","url":"https://champeil.github.io/paper/cr-pancancer-evolution-signature/","external":false,"date":"","desc":"基于 TCGA、PCAWG 等泛癌数据构建四种进化动力学特征（ES1–ES4），系统解析肿瘤克隆演化过程","keywords":"文献分享, 科研学习, 基因组学, 泛癌分析, 肿瘤克隆, 肿瘤进化, 分子分型, 计算框架, 分析方法, 生信分析","meta":"Cell Reports"},
 
+{"title":"Cancer Cell：MSS肠癌多组学","url":"https://champeil.github.io/paper/ccell-mss-crc/","external":false,"date":"","desc":"MSS 结直肠癌多组学整合：约 2,000 例肿瘤样本、316 例新分析 MSS 结直肠癌、约 4,500 个分子谱及 195,246 个单细胞/单核，iPhenMap 揭示复制应激、右侧生物学、谷氨酰胺代谢重编程与 MYC-E2F 网络；RAS 突变型中 FAK、PDK1/2、蛋白酶体抑制联合 MEK 阻断具靶向潜力","keywords":"文献分享, 科研学习, 多组学, MSS结直肠癌, 数据收集, 数据分析, COLOSSUS","meta":"Cancer Cell"},
+
 {"title":"Cell：CD4 T细胞调控因子扰动图谱","url":"https://champeil.github.io/paper/cell-perturbseq/","external":false,"date":"","desc":"原代人类 CD4+ T 细胞全基因组规模 Perturb-seq：约 2200 万细胞、12,779 个基因、静息与刺激 8/48 小时三状态，揭示刺激条件特异性调控，连接人类队列与 GWAS 自身免疫疾病风险","keywords":"文献分享, 科研学习, 单细胞转录组, CD4T细胞, 扰动图谱, 图谱","meta":"Cell"},
 
 {"title":"Cell：生发中心B细胞的进化景观","url":"https://champeil.github.io/paper/cell-gc-bcell-evolution/","external":false,"date":"","desc":"构建单克隆 B 细胞小鼠模型，\"平行重演\"119 个生发中心的抗体进化过程，推断完整的基因型-表型-适应度景观","keywords":"文献分享, 科研学习, 生发中心, B细胞克隆进化, 进化景观","meta":"Cell"},
@@ -555,6 +557,11 @@ ninja.data = [{
           description: "构建ICI治疗泛癌纵向单细胞图谱，提出TIME动态转变方向比基线状态更能预测疗效，并建立59基因特征",
           section: "Paper",handler: () => {
               window.location.href = "/paper/cc-time-ici-remodeling/";
+            },},{id: "paper-cancer-cell-mss肠癌多组学",
+          title: 'Cancer Cell：MSS肠癌多组学',
+          description: "MSS 结直肠癌多组学整合：约 2,000 例肿瘤样本、316 例新分析 MSS 结直肠癌、约 4,500 个分子谱及 195,246 个单细胞/单核，iPhenMap 揭示复制应激、右侧生物学、谷氨酰胺代谢重编程与 MYC-E2F 网络；RAS 突变型中 FAK、PDK1/2、蛋白酶体抑制联合 MEK 阻断具靶向潜力",
+          section: "Paper",handler: () => {
+              window.location.href = "/paper/ccell-mss-crc/";
             },},{id: "paper-cd-外周血新抗原与t细胞疗法潜力",
           title: 'CD：外周血新抗原与T细胞疗法潜力',
           description: "仅用外周血发现肿瘤新抗原并分离反应性T细胞，ctDNA捕获90.7%肿瘤突变，69例中约半数适用血液-only路径",
